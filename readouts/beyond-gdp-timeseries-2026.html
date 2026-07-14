@@ -1,0 +1,1412 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Beyond GDP — Time-Series Readout: March &amp; May 2026</title>
+<style>
+  :root {
+    --bg: #f7f6f2;
+    --surface: #ffffff;
+    --ink: #1a1c20;
+    --muted: #5b6470;
+    --rule: #e3e1da;
+    --accent-default: #2e4a86;
+
+    --green: #2f7a4d;
+    --green-soft: #e6f1ea;
+    --amber: #b27406;
+    --amber-soft: #fbf1dc;
+    --red:   #b03333;
+    --red-soft: #f7e3e3;
+    --blue:  #1f5fb0;
+    --blue-soft: #e2ecf8;
+    --orange:#c45a13;
+    --orange-soft: #fbe5d3;
+    --grey:  #6a727b;
+    --grey-soft: #ecedef;
+
+    --bloc-g77:     #6a4ba8;
+    --bloc-african: #b27406;
+    --bloc-aosis:   #1c8a8a;
+    --bloc-eu:      #1f5fb0;
+    --bloc-cans:    #c45a13;
+    --bloc-lmg:     #b03377;
+    --bloc-other:   #6a727b;
+    --bloc-secretariat: #888888;
+
+    --focus: #ffbf47;
+    --radius: 10px;
+    --shadow: 0 1px 2px rgba(0,0,0,.04), 0 4px 12px rgba(0,0,0,.04);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+  }
+  a { color: var(--accent-default); }
+  a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
+  }
+
+  .skip {
+    position: absolute; left: -9999px; top: 0;
+    background: var(--ink); color: #fff; padding: .6rem 1rem;
+    z-index: 100;
+  }
+  .skip:focus { left: 0; }
+
+  /* Layout */
+  .shell {
+    display: grid;
+    grid-template-columns: 240px minmax(0,1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1.25rem 4rem;
+  }
+  @media (max-width: 900px) {
+    .shell { grid-template-columns: 1fr; }
+    nav#toc { position: static !important; max-height: none !important; }
+  }
+
+  header.page {
+    grid-column: 1 / -1;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+  }
+  header.page h1 {
+    font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+    margin: 0 0 .5rem;
+    line-height: 1.2;
+  }
+  header.page dl.meta {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: .15rem 1rem;
+    margin: .75rem 0 0;
+    color: var(--muted);
+    font-size: .92rem;
+  }
+  header.page dt { font-weight: 600; color: var(--ink); }
+  header.page dd { margin: 0; }
+
+  /* TOC */
+  nav#toc {
+    position: sticky;
+    top: 1rem;
+    align-self: start;
+    max-height: calc(100vh - 2rem);
+    overflow-y: auto;
+    padding: 1rem;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    font-size: .92rem;
+  }
+  nav#toc h2 {
+    margin: 0 0 .5rem;
+    font-size: .78rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  nav#toc ol { list-style: none; padding: 0; margin: 0; }
+  nav#toc li { margin: .15rem 0; }
+  nav#toc a {
+    display: block;
+    padding: .35rem .5rem;
+    border-radius: 6px;
+    color: var(--ink);
+    text-decoration: none;
+    border-left: 3px solid transparent;
+  }
+  nav#toc a:hover { background: var(--bg); }
+  nav#toc a[aria-current="location"] {
+    background: var(--bg);
+    border-left-color: var(--accent-default);
+    font-weight: 600;
+  }
+
+  /* Sections */
+  main { min-width: 0; }
+  section.block {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 1.25rem;
+    overflow: hidden;
+  }
+  section.block > details > summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+    user-select: none;
+  }
+  section.block > details > summary::-webkit-details-marker { display: none; }
+  section.block > details > summary::before {
+    content: "▸";
+    color: var(--muted);
+    transition: transform .15s ease;
+    display: inline-block;
+    width: 1ch;
+  }
+  section.block > details[open] > summary::before { transform: rotate(90deg); }
+  .body {
+    padding: 0 1.25rem 1.25rem;
+  }
+  .body > :first-child { margin-top: 0; }
+
+  h3.sub {
+    font-size: 1rem;
+    margin: 1.25rem 0 .5rem;
+    color: var(--ink);
+  }
+  ul.tight { margin: .25rem 0 .75rem; padding-left: 1.25rem; }
+  ul.tight li { margin: .25rem 0; }
+
+  blockquote.tp {
+    border-left: 4px solid var(--accent-default);
+    background: var(--bg);
+    margin: .75rem 0;
+    padding: .75rem 1rem;
+    font-style: italic;
+    color: #2a2f37;
+    border-radius: 0 6px 6px 0;
+  }
+  blockquote.tp footer {
+    margin-top: .45rem;
+    font-style: normal;
+    font-size: .85rem;
+    color: var(--muted);
+  }
+
+  /* Meeting tab bar */
+  .meeting-tabs {
+    display: flex;
+    gap: .5rem;
+    padding: 1rem 1.25rem .75rem;
+    border-bottom: 1px solid var(--rule);
+    background: linear-gradient(180deg, #fbfaf6 0%, var(--surface) 100%);
+    flex-wrap: wrap;
+  }
+  .meeting-tab {
+    padding: .45rem 1rem;
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    font: inherit;
+    font-size: .9rem;
+    font-weight: 600;
+    cursor: pointer;
+    background: var(--surface);
+    color: var(--muted);
+    transition: background .12s ease, color .12s ease, border-color .12s ease;
+  }
+  .meeting-tab[aria-selected="true"] {
+    background: var(--accent-default);
+    color: #fff;
+    border-color: var(--accent-default);
+  }
+  .meeting-tab:hover:not([aria-selected="true"]) {
+    background: var(--bg);
+    color: var(--ink);
+  }
+  .meeting-meta-bar {
+    padding: .4rem 1.25rem .6rem;
+    font-size: .82rem;
+    color: var(--muted);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  /* Controls bar */
+  .controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--rule);
+    background: linear-gradient(180deg, #fbfaf6 0%, var(--surface) 100%);
+  }
+  .control-group {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+  }
+  .control-group .label {
+    font-size: .78rem;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  .search {
+    flex: 1 1 220px;
+    min-width: 180px;
+    padding: .5rem .75rem;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    font: inherit;
+    background: var(--surface);
+  }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4rem;
+    padding: .75rem 1.25rem;
+    border-bottom: 1px solid var(--rule);
+    background: var(--surface);
+  }
+  .chip {
+    border: 1px solid var(--rule);
+    background: var(--surface);
+    border-radius: 999px;
+    padding: .3rem .7rem;
+    font: inherit;
+    font-size: .85rem;
+    cursor: pointer;
+    color: var(--ink);
+  }
+  .chip[aria-pressed="true"] {
+    background: var(--ink);
+    color: #fff;
+    border-color: var(--ink);
+  }
+  .chip[data-filter="support"][aria-pressed="true"] { background: var(--green); border-color: var(--green); }
+  .chip[data-filter="cautious"][aria-pressed="true"] { background: var(--amber); border-color: var(--amber); }
+  .chip[data-filter="skeptical"][aria-pressed="true"] { background: var(--red); border-color: var(--red); }
+  .chip[data-filter="pro"][aria-pressed="true"] { background: var(--blue); border-color: var(--blue); }
+  .chip[data-filter="anti"][aria-pressed="true"] { background: var(--orange); border-color: var(--orange); }
+
+  .result-count {
+    font-size: .85rem;
+    color: var(--muted);
+    padding: 0 1.25rem .5rem;
+  }
+
+  /* Country cards */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: .85rem;
+    padding: 1rem 1.25rem 1.25rem;
+  }
+  .card {
+    --accent: var(--grey);
+    --accent-bg: var(--grey-soft);
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-left: 5px solid var(--accent);
+    border-radius: 8px;
+    padding: .75rem .9rem;
+    box-shadow: var(--shadow);
+    transition: border-color .15s ease, opacity .15s ease;
+  }
+  .card.silent-card {
+    opacity: .45;
+    border-left-color: var(--rule) !important;
+    background: #fafafa;
+  }
+  .card.secretariat-card {
+    border-left-style: dashed;
+    opacity: .8;
+  }
+  .card h4 {
+    margin: 0 0 .25rem;
+    font-size: 1rem;
+  }
+  .card .badge-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .3rem;
+    margin: .25rem 0 .5rem;
+  }
+  .badge {
+    display: inline-block;
+    font-size: .72rem;
+    font-weight: 600;
+    padding: .15rem .5rem;
+    border-radius: 999px;
+    background: var(--accent-bg);
+    color: var(--accent);
+    border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+    letter-spacing: .02em;
+  }
+  .badge.silent-badge {
+    background: var(--grey-soft);
+    color: var(--grey);
+    border-color: var(--rule);
+  }
+  .card p { margin: .25rem 0 0; font-size: .92rem; color: #2a2f37; }
+  .card.silent-card p { color: var(--muted); font-style: italic; }
+  .card[hidden] { display: none; }
+
+  /* Card colors by bloc */
+  .card[data-bloc="g77"]          { --accent: var(--bloc-g77);     --accent-bg: color-mix(in srgb, var(--bloc-g77) 12%, white); }
+  .card[data-bloc="african"]      { --accent: var(--bloc-african); --accent-bg: color-mix(in srgb, var(--bloc-african) 12%, white); }
+  .card[data-bloc="aosis"]        { --accent: var(--bloc-aosis);   --accent-bg: color-mix(in srgb, var(--bloc-aosis) 12%, white); }
+  .card[data-bloc="eu"]           { --accent: var(--bloc-eu);      --accent-bg: color-mix(in srgb, var(--bloc-eu) 12%, white); }
+  .card[data-bloc="cans"]         { --accent: var(--bloc-cans);    --accent-bg: color-mix(in srgb, var(--bloc-cans) 12%, white); }
+  .card[data-bloc="lmg-mic"]      { --accent: var(--bloc-lmg);     --accent-bg: color-mix(in srgb, var(--bloc-lmg) 12%, white); }
+  .card[data-bloc="secretariat"]  { --accent: var(--bloc-secretariat); --accent-bg: color-mix(in srgb, var(--bloc-secretariat) 10%, white); }
+  .card[data-bloc="other"]        { --accent: var(--bloc-other);   --accent-bg: var(--grey-soft); }
+
+  /* Toolbar global */
+  .global-toolbar {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    padding: .75rem 1rem;
+    margin-bottom: 1.25rem;
+    box-shadow: var(--shadow);
+  }
+  .btn {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: .4rem .75rem;
+    font: inherit;
+    font-size: .88rem;
+    cursor: pointer;
+    color: var(--ink);
+  }
+  .btn:hover { background: var(--bg); }
+
+  footer.page {
+    grid-column: 1 / -1;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule);
+    color: var(--muted);
+    font-style: italic;
+    font-size: .9rem;
+  }
+
+  /* Fault-line callout */
+  .fault-line {
+    background: var(--bg);
+    border-left: 4px solid var(--accent-default);
+    padding: .6rem .9rem;
+    margin: .5rem 0;
+    border-radius: 0 6px 6px 0;
+  }
+  .fault-line strong { color: var(--ink); }
+  .outlier {
+    background: var(--amber-soft);
+    border-left: 4px solid var(--amber);
+    padding: .6rem .9rem;
+    margin: .75rem 0;
+    border-radius: 0 6px 6px 0;
+  }
+
+  /* Plot */
+  .plot-controls {
+    display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;
+    padding: 1rem 1.25rem; border-bottom: 1px solid var(--rule);
+    background: linear-gradient(180deg, #fbfaf6 0%, var(--surface) 100%);
+  }
+  .plot-controls select {
+    font: inherit; padding: .4rem .55rem;
+    border: 1px solid var(--rule); border-radius: 8px; background: var(--surface);
+  }
+  .plot-wrap {
+    padding: 1rem 1.25rem 1.5rem;
+    overflow-x: auto;
+  }
+  .plot {
+    --cell: 200px;
+    position: relative;
+    display: grid;
+    grid-template-columns: 32px 120px repeat(3, var(--cell));
+    grid-template-rows: repeat(3, var(--cell)) 28px 28px;
+    gap: 0;
+    min-width: calc(32px + 120px + 3 * var(--cell));
+    margin: 0 auto;
+  }
+  .plot .axis-label {
+    font-size: .78rem; font-weight: 600; color: var(--muted);
+    text-transform: uppercase; letter-spacing: .06em;
+    display: flex; align-items: center; justify-content: center;
+    padding: .25rem;
+  }
+  .plot .axis-label.x { grid-row: 5; grid-column: 3 / span 3; border-top: 1px solid var(--rule); }
+  .plot .axis-label.y {
+    grid-row: 1 / span 3; grid-column: 1;
+    writing-mode: vertical-rl; transform: rotate(180deg);
+  }
+  .plot .col-head {
+    grid-row: 4;
+    font-size: .8rem; font-weight: 600; color: var(--ink);
+    text-align: center; padding: .3rem .25rem;
+    border-top: 1px solid var(--rule);
+  }
+  .plot .row-head {
+    grid-column: 2;
+    font-size: .78rem; color: var(--ink); font-weight: 600;
+    display: flex; align-items: center; justify-content: flex-end;
+    padding: .25rem .5rem;
+    text-align: right;
+    border-right: 1px solid var(--rule);
+  }
+  .plot .cell {
+    position: relative;
+    border: 1px dashed var(--rule);
+    background: color-mix(in srgb, var(--bg) 60%, white);
+    min-height: var(--cell);
+  }
+  .plot .cell-inner {
+    position: absolute;
+    inset: 18px;
+  }
+  .plot .cell:hover { background: color-mix(in srgb, var(--accent-default) 5%, white); }
+  .dot {
+    position: absolute;
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    background: var(--dot, var(--grey));
+    color: #fff;
+    font-size: .62rem;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    cursor: default;
+    box-shadow: 0 1px 3px rgba(0,0,0,.18);
+    transform: translate(-50%, -50%);
+    border: 2px solid #fff;
+    transition: transform .12s ease;
+  }
+  .dot:hover, .dot:focus {
+    transform: translate(-50%, -50%) scale(1.5);
+    z-index: 10;
+    outline: none;
+  }
+  .dot[data-bloc="g77"]     { --dot: var(--bloc-g77); }
+  .dot[data-bloc="african"] { --dot: var(--bloc-african); }
+  .dot[data-bloc="aosis"]   { --dot: var(--bloc-aosis); }
+  .dot[data-bloc="eu"]      { --dot: var(--bloc-eu); }
+  .dot[data-bloc="cans"]    { --dot: var(--bloc-cans); }
+  .dot[data-bloc="lmg-mic"] { --dot: var(--bloc-lmg); }
+  .dot[data-bloc="other"]   { --dot: var(--bloc-other); }
+
+  #dot-float-tip {
+    position: fixed;
+    background: var(--ink); color: #fff;
+    padding: .45rem .6rem; border-radius: 6px;
+    font-size: .68rem; line-height: 1.35;
+    font-weight: 400;
+    width: 240px;
+    white-space: normal;
+    text-align: left;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0; transition: opacity .12s ease;
+  }
+  #dot-float-tip strong { display: block; margin-bottom: .15rem; font-size: .72rem; }
+
+  .plot-legend {
+    display: flex; flex-wrap: wrap; gap: .75rem 1.25rem;
+    padding: .75rem 1.25rem 1rem;
+    font-size: .82rem; color: var(--muted);
+  }
+  .plot-legend .swatch {
+    display: inline-block; width: 12px; height: 12px;
+    border-radius: 50%; vertical-align: middle;
+    margin-right: .35rem; border: 2px solid #fff;
+    box-shadow: 0 0 0 1px var(--rule);
+  }
+
+  .plot-guide {
+    margin: 0 1.25rem .75rem;
+    padding: .65rem .9rem;
+    background: color-mix(in srgb, var(--accent-default) 7%, white);
+    border-left: 3px solid var(--accent-default);
+    border-radius: 6px;
+    font-size: .83rem; color: var(--muted); line-height: 1.5;
+  }
+  .plot-guide p { margin: 0; }
+
+  .axis-explainer {
+    margin: .5rem 1.25rem .75rem;
+    padding: .75rem 1rem;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    font-size: .83rem; line-height: 1.55;
+  }
+  .axis-explainer .ae-header {
+    display: flex; align-items: center; gap: .5rem;
+    margin-bottom: .5rem;
+  }
+  .axis-explainer .ae-icon { flex-shrink: 0; color: var(--accent-default); }
+  .axis-explainer .ae-title { font-weight: 700; font-size: .88rem; color: var(--ink); }
+  .axis-explainer .ae-def { color: var(--muted); margin-bottom: .6rem; }
+  .axis-explainer .ae-rows { display: flex; flex-direction: column; gap: .3rem; }
+  .axis-explainer .ae-row { display: flex; gap: .6rem; align-items: baseline; }
+  .axis-explainer .ae-row-label { font-weight: 600; min-width: 130px; color: var(--ink); flex-shrink: 0; }
+  .axis-explainer .ae-row-desc { color: var(--muted); }
+
+  @media (max-width: 720px) {
+    .plot { --cell: 110px; }
+    .dot { width: 22px; height: 22px; font-size: .58rem; }
+  }
+
+  /* Drift table */
+  .drift-table-wrap {
+    padding: 0 1.25rem 1.25rem;
+    overflow-x: auto;
+  }
+  .drift-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .88rem;
+  }
+  .drift-table th {
+    text-align: left;
+    padding: .5rem .75rem;
+    background: var(--bg);
+    border-bottom: 2px solid var(--rule);
+    font-size: .78rem;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .drift-table td {
+    padding: .5rem .75rem;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+  }
+  .drift-table tr:last-child td { border-bottom: none; }
+  .drift-table .country-cell { font-weight: 600; }
+
+  .stance-pill {
+    display: inline-block;
+    font-size: .72rem; font-weight: 700;
+    padding: .12rem .45rem;
+    border-radius: 999px;
+    letter-spacing: .02em;
+  }
+  .stance-pill.support   { background: var(--green-soft); color: var(--green); }
+  .stance-pill.cautious  { background: var(--amber-soft); color: var(--amber); }
+  .stance-pill.skeptical { background: var(--red-soft);   color: var(--red); }
+  .stance-pill.silent    { background: var(--grey-soft);  color: var(--grey); }
+  .stance-pill.inaudible { background: #f0e8ff; color: #7a4b9a; }
+
+  .movement-cell { font-size: .82rem; }
+  .movement-cell .mv-stable    { color: var(--muted); }
+  .movement-cell .mv-hardened  { color: var(--red); font-weight: 600; }
+  .movement-cell .mv-softened  { color: var(--green); font-weight: 600; }
+  .movement-cell .mv-new       { color: var(--blue); font-weight: 600; }
+
+  .drift-note {
+    margin: .75rem 1.25rem;
+    padding: .6rem .9rem;
+    background: var(--amber-soft);
+    border-left: 3px solid var(--amber);
+    border-radius: 6px;
+    font-size: .82rem;
+    color: var(--muted);
+  }
+
+  /* Print */
+  @media print {
+    body { background: #fff; color: #000; }
+    .shell { grid-template-columns: 1fr; max-width: none; padding: 0; gap: 0; }
+    nav#toc, .global-toolbar, .controls, .chips, .result-count { display: none !important; }
+    section.block { box-shadow: none; border: none; page-break-inside: avoid; }
+    .card { box-shadow: none; }
+    .grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  .seq-banner {
+    grid-column: 1 / -1;
+    display: flex; flex-wrap: wrap; align-items: center; gap: .5rem .75rem;
+    background: color-mix(in srgb, var(--accent-default) 7%, white);
+    border: 1px solid color-mix(in srgb, var(--accent-default) 20%, var(--rule));
+    border-radius: var(--radius);
+    padding: .7rem 1rem; margin-bottom: 1.25rem;
+    font-size: .88rem; color: var(--muted);
+  }
+  .seq-banner .seq-step {
+    display: inline-flex; align-items: center; gap: .35rem;
+    padding: .2rem .6rem; border-radius: 999px;
+    background: var(--surface); border: 1px solid var(--rule);
+  }
+  .seq-banner .seq-step.current { background: var(--accent-default); color: #fff; border-color: var(--accent-default); font-weight: 600; }
+  .seq-banner .seq-step a { color: inherit; text-decoration: none; }
+  .seq-banner .seq-arrow { color: var(--muted); }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="shell">
+
+  <header class="page">
+    <h1>Beyond GDP — Time-Series Readout: March &amp; May 2026</h1>
+    <dl class="meta">
+      <dt>Meetings</dt><dd>4 March 2026 GA Briefing &amp; 7 May 2026 First Open Consultation</dd>
+      <dt>Process</dt><dd>UN HLEG on Beyond GDP → Intergovernmental process (Pact for the Future, Action 53)</dd>
+      <dt>Source</dt><dd>Verbatim transcript analysis — segmented Whisper transcripts only</dd>
+    </dl>
+    <p style="margin:.85rem 0 0; font-size:.9rem; color:var(--muted);">
+      Positions sourced exclusively from audio transcripts. No inferences from UN documents or press releases. Unstated positions coded <em>silent</em>.
+    </p>
+  </header>
+
+  <div class="seq-banner" aria-label="Meeting sequence">
+    <span>Beyond GDP sequence:</span>
+    <span class="seq-step"><a href="beyond-gdp-ga-briefing-2026-03.html">1 · 4 Mar 2026 — GA Briefing</a></span>
+    <span class="seq-arrow">→</span>
+    <span class="seq-step"><a href="beyond-gdp-consultation-public.html">2 · 7 May 2026 — Open Consultation</a></span>
+    <span class="seq-arrow">→</span>
+    <span class="seq-step"><a href="beyond-gdp-panel-public-2026-07.html">3 · Jul 2026 — HLPF Panel</a></span>
+    <span class="seq-step current">Time series (Mar &amp; May)</span>
+  </div>
+
+  <nav id="toc" aria-label="Sections">
+    <h2>On this page</h2>
+    <ol>
+      <li><a href="#stances">Stances by Speaker</a></li>
+      <li><a href="#plot">Fault-Line Plot</a></li>
+      <li><a href="#drift">Position Drift Table</a></li>
+    </ol>
+  </nav>
+
+  <main id="main">
+
+    <div class="global-toolbar" role="group" aria-label="Document controls">
+      <div class="control-group">
+        <button class="btn" id="expand-all" type="button">Expand all</button>
+        <button class="btn" id="collapse-all" type="button">Collapse all</button>
+      </div>
+    </div>
+
+    <!-- ==================== STANCES SECTION ==================== -->
+    <section class="block" id="stances">
+      <details open>
+        <summary>Stances by Speaker</summary>
+
+        <!-- Meeting tabs -->
+        <div class="meeting-tabs" role="tablist" aria-label="Select meeting">
+          <button class="meeting-tab" role="tab" aria-selected="true"  id="tab-march" aria-controls="panel-stances">4 March 2026 — GA Briefing</button>
+          <button class="meeting-tab" role="tab" aria-selected="false" id="tab-may"   aria-controls="panel-stances">7 May 2026 — Open Consultation</button>
+        </div>
+        <div class="meeting-meta-bar" id="meeting-meta" aria-live="polite"></div>
+
+        <div class="controls" role="search">
+          <div class="control-group" style="flex:1 1 220px;">
+            <label for="country-search" class="label" style="white-space:nowrap;">Search</label>
+            <input id="country-search" class="search" type="search" placeholder="Filter by name or stance text…" aria-controls="country-grid">
+          </div>
+        </div>
+
+        <div class="chips" role="group" aria-label="Filter by stance">
+          <button class="chip" data-filter="all"       aria-pressed="true">All</button>
+          <button class="chip" data-filter="support"   aria-pressed="false">Supportive</button>
+          <button class="chip" data-filter="cautious"  aria-pressed="false">Cautious</button>
+          <button class="chip" data-filter="skeptical" aria-pressed="false">Skeptical</button>
+          <button class="chip" data-filter="pro"       aria-pressed="false">Finance-pro</button>
+          <button class="chip" data-filter="anti"      aria-pressed="false">Finance-anti</button>
+        </div>
+
+        <div class="result-count" id="result-count" aria-live="polite"></div>
+        <div class="grid" id="country-grid" role="region" aria-label="Speaker cards"></div>
+
+      </details>
+    </section>
+
+    <!-- ==================== FAULT-LINE PLOT ==================== -->
+    <section class="block" id="plot">
+      <details open>
+        <summary>Fault-Line Plot</summary>
+
+        <!-- Meeting tabs for plot -->
+        <div class="meeting-tabs" role="tablist" aria-label="Select meeting for plot">
+          <button class="meeting-tab" role="tab" aria-selected="true"  id="ptab-march" aria-controls="plot-grid">4 March 2026</button>
+          <button class="meeting-tab" role="tab" aria-selected="false" id="ptab-may"   aria-controls="plot-grid">7 May 2026</button>
+        </div>
+
+        <div class="plot-guide">
+          <p><strong>How to read this plot.</strong> X-axis: <em>Stance Intensity</em> (Skeptical → Cautious → Supportive). Choose a fault-line dimension for the Y-axis. Each dot is one delegation; colour shows regional bloc. "Silent" = no explicit position in the transcript. Hover a dot for stance text. UN officials (chairs, HLEG, DSG) are excluded — only member-state and bloc positions are plotted.</p>
+        </div>
+
+        <div class="plot-controls">
+          <div class="control-group">
+            <label class="label" for="axis-y">Y axis — fault-line dimension</label>
+            <select id="axis-y">
+              <option value="finance">Finance-link</option>
+              <option value="subjectivity" selected>Indicator subjectivity</option>
+              <option value="governance">Governance venue</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="axis-explainer" id="axis-explainer" aria-live="polite"></div>
+        <div class="plot-wrap">
+          <div class="plot" id="plot-grid" role="img" aria-label="Two-axis scatter of delegation positions"></div>
+        </div>
+        <div class="plot-legend" id="plot-legend"></div>
+      </details>
+    </section>
+
+    <!-- ==================== POSITION DRIFT TABLE ==================== -->
+    <section class="block" id="drift">
+      <details open>
+        <summary>Position Drift — March → May 2026</summary>
+        <div class="body">
+          <p>Delegations present in both meetings. Stance coded from transcript verbatim; unstated = <em>silent</em>. Movement assessed against the four fault-line axes combined.</p>
+
+          <div class="drift-note">
+            <strong>Note:</strong> Saudi Arabia and China were near-inaudible at the March podium (audio issue). Their March row is flagged accordingly. May positions are drawn from the <code>beyond-gdp-consultation-public.html</code> JS data array.
+          </div>
+        </div>
+
+        <div class="drift-table-wrap">
+          <table class="drift-table" aria-label="Position drift between March and May 2026">
+            <thead>
+              <tr>
+                <th>Delegation</th>
+                <th>March 2026 stance</th>
+                <th>May 2026 stance</th>
+                <th>Movement</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="country-cell">Philippines (LMG MIC)</td>
+                <td><span class="stance-pill support">Supportive</span></td>
+                <td><span class="stance-pill support">Supportive</span></td>
+                <td class="movement-cell"><span class="mv-stable">→ Stable</span></td>
+                <td>Consistent finance-link emphasis both meetings; LMG MIC leadership role maintained.</td>
+              </tr>
+              <tr>
+                <td class="country-cell">Colombia</td>
+                <td><span class="stance-pill support">Supportive</span></td>
+                <td><span class="stance-pill support">Supportive</span></td>
+                <td class="movement-cell"><span class="mv-stable">→ Stable</span></td>
+                <td>Alignment with LMG MIC + G77 consistent. March: finance-link explicit. May: SDG coherence emphasis added.</td>
+              </tr>
+              <tr>
+                <td class="country-cell">Morocco</td>
+                <td><span class="stance-pill support">Supportive</span></td>
+                <td><span class="stance-pill support">Supportive</span></td>
+                <td class="movement-cell"><span class="mv-stable">→ Stable</span></td>
+                <td>Strong support both meetings. May: added call for adequate consultation time and process space.</td>
+              </tr>
+              <tr>
+                <td class="country-cell">Pakistan</td>
+                <td><span class="stance-pill skeptical">Skeptical</span></td>
+                <td><span class="stance-pill skeptical">Skeptical</span></td>
+                <td class="movement-cell"><span class="mv-hardened">↑ Hardened</span></td>
+                <td>March: general caution on capacity and methodology. May: explicit challenge to foundational principles (peace/HR not UN 3-pillar); concern indicators constrain development.</td>
+              </tr>
+              <tr>
+                <td class="country-cell">South Africa</td>
+                <td><span class="stance-pill support">Supportive</span></td>
+                <td><span class="stance-pill support">Supportive</span></td>
+                <td class="movement-cell"><span class="mv-stable">→ Stable</span></td>
+                <td>Both meetings: supportive of people+planet framing. May: added strong call for more review time before consultations.</td>
+              </tr>
+              <tr>
+                <td class="country-cell">China</td>
+                <td><span class="stance-pill inaudible">[Inaudible]</span></td>
+                <td><span class="stance-pill skeptical">Skeptical</span></td>
+                <td class="movement-cell"><span class="mv-new">? No March record</span></td>
+                <td>March transcript inaudible at podium — no position recorded. May: resists subjective indicators; insists on objective/quantifiable metrics and national ownership.</td>
+              </tr>
+              <tr>
+                <td class="country-cell">Saudi Arabia</td>
+                <td><span class="stance-pill inaudible">[Inaudible]</span></td>
+                <td><span class="stance-pill silent">Silent</span></td>
+                <td class="movement-cell"><span class="mv-new">? No March record</span></td>
+                <td>March transcript inaudible at podium. Did not take floor at May consultation.</td>
+              </tr>
+              <tr>
+                <td class="country-cell">Japan</td>
+                <td><span class="stance-pill cautious">Cautious</span></td>
+                <td><span class="stance-pill cautious">Cautious</span></td>
+                <td class="movement-cell"><span class="mv-stable">→ Stable</span></td>
+                <td>Both meetings: welcomes well-being concepts, emphasises flexibility and national context. Consistent across meetings.</td>
+              </tr>
+              <tr>
+                <td class="country-cell">Kenya</td>
+                <td><span class="stance-pill support">Supportive</span></td>
+                <td><span class="stance-pill support">Supportive</span></td>
+                <td class="movement-cell"><span class="mv-stable">→ Stable</span></td>
+                <td>Consistent support; emphasis on member-state ownership, capacity building, and SDG alignment both meetings.</td>
+              </tr>
+              <tr>
+                <td class="country-cell">Ethiopia</td>
+                <td><span class="stance-pill support">Supportive</span></td>
+                <td><span class="stance-pill support">Supportive</span></td>
+                <td class="movement-cell"><span class="mv-stable">→ Stable</span></td>
+                <td>Consistent support for holistic well-being metrics; emphasises data investment both meetings.</td>
+              </tr>
+              <tr>
+                <td class="country-cell">Australia (CANS)</td>
+                <td><span class="stance-pill skeptical">Skeptical</span></td>
+                <td><span class="stance-pill skeptical">Skeptical</span></td>
+                <td class="movement-cell"><span class="mv-stable">→ Stable</span></td>
+                <td>March: questioned finance-link. May (via NZ for CANS): explicitly opposes using framework for concessional finance decisions; prefers StatComm for technical work.</td>
+              </tr>
+              <tr>
+                <td class="country-cell">Bangladesh</td>
+                <td><span class="stance-pill support">Supportive</span></td>
+                <td><span class="stance-pill silent">Silent</span></td>
+                <td class="movement-cell"><span class="mv-stable">→ Stable (absent May)</span></td>
+                <td>March: supportive with caveats (no replacement of GDP, avoid ranking system). Did not take floor at May consultation.</td>
+              </tr>
+              <tr>
+                <td class="country-cell">Mexico</td>
+                <td><span class="stance-pill support">Supportive</span></td>
+                <td><span class="stance-pill support">Supportive</span></td>
+                <td class="movement-cell"><span class="mv-stable">→ Stable</span></td>
+                <td>Both meetings: build on existing frameworks, recognise national diversity. March asked about political challenges; May emphasised StatComm role.</td>
+              </tr>
+              <tr>
+                <td class="country-cell">Poland</td>
+                <td><span class="stance-pill support">Supportive</span></td>
+                <td><span class="stance-pill silent">Silent</span></td>
+                <td class="movement-cell"><span class="mv-stable">→ Stable (absent May)</span></td>
+                <td>March: constructive support, asked about HDI complementarity. Did not take floor at May consultation.</td>
+              </tr>
+              <tr>
+                <td class="country-cell">Lao PDR</td>
+                <td><span class="stance-pill support">Supportive</span></td>
+                <td><span class="stance-pill silent">Silent</span></td>
+                <td class="movement-cell"><span class="mv-stable">→ Stable (absent May)</span></td>
+                <td>March: supportive; country-led flexible approach, capacity focus. Did not take floor at May consultation.</td>
+              </tr>
+              <tr>
+                <td class="country-cell">Zimbabwe</td>
+                <td><span class="stance-pill support">Supportive</span></td>
+                <td><span class="stance-pill silent">Silent</span></td>
+                <td class="movement-cell"><span class="mv-stable">→ Stable (absent May)</span></td>
+                <td>March: supportive; national ownership, coherence, capacity. Did not take floor at May consultation.</td>
+              </tr>
+              <tr>
+                <td class="country-cell">Panama</td>
+                <td><span class="stance-pill cautious">Cautious</span></td>
+                <td><span class="stance-pill silent">Silent</span></td>
+                <td class="movement-cell"><span class="mv-stable">→ Stable (absent May)</span></td>
+                <td>March: support in principle but multiple operational questions (how to define GDP over-reliance cases). Did not take floor at May consultation.</td>
+              </tr>
+              <tr>
+                <td class="country-cell">Angola</td>
+                <td><span class="stance-pill support">Supportive</span></td>
+                <td><span class="stance-pill silent">Silent</span></td>
+                <td class="movement-cell"><span class="mv-stable">→ Stable (absent May)</span></td>
+                <td>March: supportive, national ownership emphasis, coherence. Did not take floor at May consultation.</td>
+              </tr>
+            </tbody>
+          </table>
+          <!-- TODO: automate drift calc -->
+        </div>
+
+        <div class="body" style="padding-top:0;">
+          <h3 class="sub">New entrants at May 2026 (not in March record)</h3>
+          <ul class="tight">
+            <li><strong>G77/China (Uruguay)</strong> — spoke as bloc at May; no bloc statement in March (individual countries spoke instead).</li>
+            <li><strong>African Group (Mauritius)</strong> — bloc statement at May; not as bloc in March.</li>
+            <li><strong>AOSIS (Palau)</strong> — bloc statement at May.</li>
+            <li><strong>EU</strong> — bloc statement at May; Austria spoke individually in March.</li>
+            <li><strong>CANS (New Zealand)</strong> — bloc statement at May; Australia spoke individually in March.</li>
+            <li><strong>Russian Federation</strong> — present at May; not in March record.</li>
+            <li><strong>Indonesia, Barbados, Germany, Armenia, Brazil, Timor-Leste, Dominican Republic, United Kingdom, Bhutan, Sudan</strong> — May only.</li>
+          </ul>
+        </div>
+      </details>
+    </section>
+
+    <footer class="page">
+      Readout based solely on transcript analysis. Sources: <em>beyond-gdp-2026-03-04.segmented.md</em> (4 March 2026) and <em>Beyond GDP UN Informal Hearing_May 2026.segmented.md</em> (7 May 2026). Saudi Arabia and China March positions omitted — podium audio inaudible at those moments.
+    </footer>
+
+  </main>
+</div>
+
+<div id="dot-float-tip" role="tooltip" aria-hidden="true"></div>
+
+<script>
+(function () {
+
+  // ─── DATA ─────────────────────────────────────────────────────────────────
+  // speakerType: "delegation" | "secretariat"
+  // Secretariat speakers appear in cards but are NOT plotted.
+  // stance: "support" | "cautious" | "skeptical" | "silent" (absent/inaudible)
+  // finance:      "pro" | "neutral" | "anti" | "silent"
+  // subjectivity: "welcome" | "silent" | "resist"
+  // governance:   "political" | "silent" | "technical"
+
+  const DATA_MARCH = [
+    // ── Secretariat / chairs / experts (cards only, not plotted) ──
+    { name:"PGA Baerbock",         speakerType:"secretariat", bloc:"secretariat", stance:"silent", finance:"silent", subjectivity:"silent", governance:"silent",
+      quote:"GDP has served as the dominant measure of economic progress… failing to measure the health of our people, the resilience of our societies, and the sustainability of our planet leads to the cynical situation that GDP even tends to increase during crises, national disasters, and even war." },
+    { name:"DSG Amina Mohammed",   speakerType:"secretariat", bloc:"secretariat", stance:"silent", finance:"silent", subjectivity:"silent", governance:"silent",
+      quote:"You asked us to present the outcome of that work during the current session… agreed that the launch of the expert group report should trigger an intergovernmental process." },
+    { name:"Basu (HLEG co-chair)", speakerType:"secretariat", bloc:"secretariat", stance:"silent", finance:"silent", subjectivity:"silent", governance:"silent",
+      quote:"We want to trigger the right kind of competition, that countries are striving for something which contributes to human welfare, planetary well-being." },
+    { name:"Lustig (HLEG co-chair)",speakerType:"secretariat", bloc:"secretariat", stance:"silent", finance:"silent", subjectivity:"silent", governance:"silent",
+      quote:"This has to be seen as a process. Our recommendations should not be seen as something that is unmovable. We want to continue the discussion." },
+
+    // ── Delegations ──
+    { name:"Philippines (LMG MIC)", speakerType:"delegation", bloc:"lmg-mic", stance:"support", finance:"pro", subjectivity:"silent", governance:"silent",
+      quote:"The group believes that the framework should consider interoperability with the policies of the international financial institutions… we look forward to a more concrete link between the new framework and reform of the current international debt architecture, which deprives MIC of concessional finance." },
+    { name:"Colombia",              speakerType:"delegation", bloc:"g77",     stance:"support", finance:"pro", subjectivity:"silent", governance:"silent",
+      quote:"La iniciativa Más Allá del Producto Interno Bruto constituye un avance esencial para actualizar la manera en que entendemos el desarrollo en el siglo XXI." },
+    { name:"Morocco",               speakerType:"delegation", bloc:"g77",     stance:"support", finance:"pro", subjectivity:"silent", governance:"silent",
+      quote:"Rethinking how we measure progress is not a technical detail, but a political and development imperative. The framework should provide broader policy recommendations able to inform decision-making and how access to development finance is managed." },
+    { name:"Angola",                speakerType:"delegation", bloc:"african", stance:"support", finance:"pro", subjectivity:"silent", governance:"silent",
+      quote:"National ownership must remain central. Any framework of indicators should empower countries to define their development priorities and strengthen domestic planning processes." },
+    { name:"Austria",               speakerType:"delegation", bloc:"eu",      stance:"cautious", finance:"neutral", subjectivity:"silent", governance:"silent",
+      quote:"We fully support the work of the high-level expert group… Austria particularly appreciates the outreach and inclusivity that the group has pursued." },
+    { name:"Pakistan",              speakerType:"delegation", bloc:"g77",     stance:"skeptical", finance:"neutral", subjectivity:"resist", governance:"silent",
+      quote:"Any global framework on beyond GDP should remain practical, sensitive to national contexts. Indicators must be methodologically sound and aligned with existing frameworks." },
+    { name:"Saudi Arabia",          speakerType:"delegation", bloc:"other",   stance:"silent", finance:"silent", subjectivity:"silent", governance:"silent",
+      quote:"[Transcript inaudible — podium audio issue at this delegation's intervention. No position recorded.]" },
+    { name:"South Africa",          speakerType:"delegation", bloc:"african", stance:"support", finance:"pro", subjectivity:"silent", governance:"political",
+      quote:"In attempting to measure development beyond GDP, the work of the High Level Expert Group fosters a context-specific multidimensional approach to measuring economic growth and development especially in the global south." },
+    { name:"China",                 speakerType:"delegation", bloc:"g77",     stance:"silent", finance:"silent", subjectivity:"silent", governance:"silent",
+      quote:"[Transcript inaudible — podium audio issue at this delegation's intervention. No position recorded.]" },
+    { name:"Switzerland",           speakerType:"delegation", bloc:"other",   stance:"cautious", finance:"neutral", subjectivity:"silent", governance:"silent",
+      quote:"Le PIB demeure un indicateur clé de l'activité économique, mais il ne suffit pas à orienter les politiques dans un monde complexe." },
+    { name:"Spain",                 speakerType:"delegation", bloc:"eu",      stance:"support", finance:"neutral", subjectivity:"silent", governance:"silent",
+      quote:"Going beyond the PIB is not only a conceptual change. It requires tools, educational preparation and a political commitment sustained." },
+    { name:"Kenya",                 speakerType:"delegation", bloc:"african", stance:"support", finance:"pro", subjectivity:"silent", governance:"political",
+      quote:"New indicators should complement rather than replace existing frameworks, particularly the SDG indicator framework. Adoption of broader development metrics should help inform international financing and development cooperation." },
+    { name:"Japan",                 speakerType:"delegation", bloc:"other",   stance:"cautious", finance:"neutral", subjectivity:"welcome", governance:"silent",
+      quote:"As discussions progress toward concrete indicators, the importance of an open, transparent and inclusive process among member states will be vital to fostering shared understanding and ownership." },
+    { name:"Mexico",                speakerType:"delegation", bloc:"g77",     stance:"support", finance:"pro", subjectivity:"silent", governance:"silent",
+      quote:"It is important to recognize the diversity of realities… Mexico has a concrete experience: since more than two decades we have an official multidimensional measure of poverty." },
+    { name:"Ethiopia",              speakerType:"delegation", bloc:"african", stance:"support", finance:"pro", subjectivity:"silent", governance:"silent",
+      quote:"Beyond simple financial and economic indicators, the focus on holistic well-being and low-carbon, resource-efficient, and socially inclusive approach define our development trajectory." },
+    { name:"Lao PDR",               speakerType:"delegation", bloc:"g77",     stance:"support", finance:"neutral", subjectivity:"silent", governance:"silent",
+      quote:"Global recommendations should remain flexible, country-led, and adaptable to the national context, while building on existing international frameworks including SDGs." },
+    { name:"Poland",                speakerType:"delegation", bloc:"eu",      stance:"support", finance:"neutral", subjectivity:"silent", governance:"silent",
+      quote:"We support the Beyond GDP approach, which complements GDP with broader and multidimensional indicators that better serve public policy." },
+    { name:"Australia",             speakerType:"delegation", bloc:"cans",    stance:"skeptical", finance:"anti", subjectivity:"silent", governance:"technical",
+      quote:"Australia wants multidimensional sustainable development metrics to complement income-only measures in international financing frameworks — but eligibility or allocation criteria should be context-specific." },
+    { name:"Panama",                speakerType:"delegation", bloc:"g77",     stance:"cautious", finance:"pro", subjectivity:"silent", governance:"silent",
+      quote:"Advancing to metrics that complement or overcome the PIB is not a technical exercise. It represents an important step to expand the data on which public policy decisions are defined." },
+    { name:"Zimbabwe",              speakerType:"delegation", bloc:"african", stance:"support", finance:"pro", subjectivity:"silent", governance:"political",
+      quote:"The framework must remain grounded in country ownership. For developing countries, this includes recognizing exposure to shocks, climate risks, and debt burdens." },
+    { name:"Bangladesh",            speakerType:"delegation", bloc:"g77",     stance:"support", finance:"pro", subjectivity:"silent", governance:"political",
+      quote:"The beyond-GDP process must not seek to replace GDP altogether. It should add clarity and depth to how we understand sustainable development without creating confusion in economic policymaking." }
+  ];
+
+  const DATA_MAY = [
+    // ── Secretariat / chairs / experts (cards only, not plotted) ──
+    { name:"Rodriguez-Birkett (Co-facilitator, Guyana)", speakerType:"secretariat", bloc:"secretariat", stance:"silent", finance:"silent", subjectivity:"silent", governance:"silent",
+      quote:"As co-facilitators, we are committed to completing our mandate in a manner that is transparent and inclusive, one that will represent a tangible step forward on the adoption of country-owned, universally applicable indicators of sustainable development beyond GDP." },
+    { name:"Gomez-Hernandez (Co-facilitator, Spain)",    speakerType:"secretariat", bloc:"secretariat", stance:"silent", finance:"silent", subjectivity:"silent", governance:"silent",
+      quote:"We have to translate technical knowledge into a genuine policy priority and into systemic change." },
+    { name:"PGA Baerbock",          speakerType:"secretariat", bloc:"secretariat", stance:"silent", finance:"silent", subjectivity:"silent", governance:"silent",
+      quote:"More than 90 years after the creation of the GDP, we have before us an opportunity to align our economic communicators with our collective vision of sustainable development." },
+    { name:"SG Guterres",           speakerType:"secretariat", bloc:"secretariat", stance:"silent", finance:"silent", subjectivity:"silent", governance:"silent",
+      quote:"GDP is the most widely used metric of economic progress and well-being. It will continue to be an important measurement, but it cannot be the only one." },
+    { name:"Basu (HLEG co-chair)",  speakerType:"secretariat", bloc:"secretariat", stance:"silent", finance:"silent", subjectivity:"silent", governance:"silent",
+      quote:"An important part of our proposal is a dashboard that puts people and planet at the center of measuring progress. Its overarching objective is equitable, inclusive, and sustainable well-being." },
+    { name:"Lustig (HLEG co-chair)",speakerType:"secretariat", bloc:"secretariat", stance:"silent", finance:"silent", subjectivity:"silent", governance:"silent",
+      quote:"About 50% of the indicators in the dashboard are drawn from the SDG framework. This allows for easier uptake and lowers the barriers for adoption." },
+    { name:"DSG Amina Mohammed",    speakerType:"secretariat", bloc:"secretariat", stance:"silent", finance:"silent", subjectivity:"silent", governance:"silent",
+      quote:"The way we measure shapes the way we govern, and the way we govern shapes the lives of billions of people who may never read this report but will feel its consequences." },
+
+    // ── Delegations ──
+    { name:"G77 and China (Uruguay)",speakerType:"delegation", bloc:"g77",     stance:"support", finance:"pro", subjectivity:"silent", governance:"political",
+      quote:"This process must remain a United Nations-led intergovernmental process. The transition to a member state-driven political process is vital to achieving a shared understanding of progress." },
+    { name:"African Group (Mauritius)",speakerType:"delegation",bloc:"african", stance:"support", finance:"pro", subjectivity:"silent", governance:"political",
+      quote:"The discussion on beyond GDP is important and long overdue. Traditional income-based indicators alone do not adequately capture the development realities, structural constraints, and vulnerabilities faced by many African countries." },
+    { name:"Philippines (LMG MIC)", speakerType:"delegation", bloc:"lmg-mic", stance:"support", finance:"pro", subjectivity:"silent", governance:"silent",
+      quote:"This initiative should contribute to a broader shift towards more inclusive and responsive development approaches, including and informing access to development finance, particularly concessional finance and technical cooperation." },
+    { name:"AOSIS (Palau)",         speakerType:"delegation", bloc:"aosis",   stance:"support", finance:"pro", subjectivity:"silent", governance:"silent",
+      quote:"The intergovernmental process must not duplicate, relitigate or rewrite existing work, particularly the multi-dimensional vulnerability index. We should use this process to complement what already exists." },
+    { name:"EU",                    speakerType:"delegation", bloc:"eu",      stance:"cautious", finance:"neutral", subjectivity:"silent", governance:"silent",
+      quote:"The document is very dense and ambitious, so governments, international organizations, and stakeholders will need time to digest and formulate their views. We ask the co-facilitators to formulate and consult the membership on a detailed roadmap with a reasonable, not rushed timeline." },
+    { name:"CANS (New Zealand)",    speakerType:"delegation", bloc:"cans",    stance:"skeptical", finance:"anti", subjectivity:"silent", governance:"technical",
+      quote:"We do not view the primary focus of the proposed Beyond GDP conceptual framework and dashboard as informing concessional financing decisions, given the other tools we already have. The UN Statistical Commission seems the most sensible forum to inherit the dashboard at a technical level." },
+    { name:"Kenya",                 speakerType:"delegation", bloc:"african", stance:"support", finance:"pro", subjectivity:"silent", governance:"political",
+      quote:"This process must remain member state driven, building on existing frameworks such as the SDGs and supported by strengthened national statistical systems." },
+    { name:"Morocco",               speakerType:"delegation", bloc:"g77",     stance:"support", finance:"pro", subjectivity:"silent", governance:"silent",
+      quote:"The outcome of this process should go beyond purely statistical considerations. It should provide meaningful policy guidance capable of informing public decision-making, including how access to development financing is considered." },
+    { name:"Jamaica",               speakerType:"delegation", bloc:"g77",     stance:"support", finance:"pro", subjectivity:"silent", governance:"silent",
+      quote:"Jamaica believes that the Beyond GDP process provides a useful opportunity to deliver on our commitments to present and future generations and to accurately assess whether today's decisions will improve the lives of those who will follow us." },
+    { name:"South Africa",          speakerType:"delegation", bloc:"african", stance:"support", finance:"pro", subjectivity:"silent", governance:"political",
+      quote:"South Africa underlines the importance of allowing adequate time for member states, especially national stats agencies, to study the final report and contribute meaningfully to its review." },
+    { name:"Japan",                 speakerType:"delegation", bloc:"other",   stance:"cautious", finance:"neutral", subjectivity:"welcome", governance:"silent",
+      quote:"Japan has been working to promote well-being at various stages of life, including through efforts to promote healthy longevity in an aging society… and measures to address loneliness and social isolation." },
+    { name:"Indonesia",             speakerType:"delegation", bloc:"g77",     stance:"cautious", finance:"neutral", subjectivity:"silent", governance:"silent",
+      quote:"Beyond GDP metrics must be universally applicable while respecting national ownership. Credibility and legitimacy will depend on inclusive, transparent intergovernmental engagement." },
+    { name:"Pakistan",              speakerType:"delegation", bloc:"g77",     stance:"skeptical", finance:"neutral", subjectivity:"resist", governance:"silent",
+      quote:"We question the basis of the three foundational principles proposed in the framework. Peace, human rights, and respect for the planet do not correspond to the three pillars of the UN." },
+    { name:"Dominican Republic",    speakerType:"delegation", bloc:"g77",     stance:"support", finance:"pro", subjectivity:"silent", governance:"silent",
+      quote:"Going beyond GDP is vital to capture the multidimensional nature of development and structural vulnerabilities. These indicators may help us to guide both our priorities and efforts to forge policies which increase both effectiveness and efficiency." },
+    { name:"Barbados",              speakerType:"delegation", bloc:"aosis",   stance:"support", finance:"pro", subjectivity:"silent", governance:"silent",
+      quote:"The need to go beyond GDP has been obvious to countries like mine for a long time. The MVI and the Beyond GDP processes must progress hand in hand." },
+    { name:"Germany",               speakerType:"delegation", bloc:"eu",      stance:"cautious", finance:"neutral", subjectivity:"welcome", governance:"silent",
+      quote:"We fully support the intergenerational scope of the propositions made. It is of great importance that young voices contribute their perspectives in order to actively shape our discussions." },
+    { name:"Armenia",               speakerType:"delegation", bloc:"lmg-mic", stance:"support", finance:"pro", subjectivity:"silent", governance:"silent",
+      quote:"Resilience should be reflected more meaningfully within the broader understanding of development. Our work should also inform broader discussions on financing for development." },
+    { name:"Brazil",                speakerType:"delegation", bloc:"g77",     stance:"cautious", finance:"neutral", subjectivity:"silent", governance:"silent",
+      quote:"Given that some of the indicators are available now but not others, could the calculation of an index with only some indicators jeopardize the balance of the dashboard? Could it be a bias toward one of the pillars?" },
+    { name:"Mexico",                speakerType:"delegation", bloc:"g77",     stance:"support", finance:"pro", subjectivity:"silent", governance:"silent",
+      quote:"This process should build upon existing international agreements as well as existing statistical frameworks and SDG-related indicators. We must avoid duplication and the creation of parallel systems." },
+    { name:"Timor-Leste",           speakerType:"delegation", bloc:"aosis",   stance:"support", finance:"pro", subjectivity:"silent", governance:"silent",
+      quote:"For LDCs, including my own, this initiative is not only timely but also a matter of development justice. The multi-dimensional vulnerability index offers a more accurate basis for assessing vulnerability and guiding access to concessional finance." },
+    { name:"Russian Federation",    speakerType:"delegation", bloc:"other",   stance:"skeptical", finance:"neutral", subjectivity:"resist", governance:"silent",
+      quote:"GDP retains its key role as the principal macroeconomic indicator. New indicators should be understandable to all, measurable, and should not allow for subjective interpretation or assessment." },
+    { name:"China",                 speakerType:"delegation", bloc:"g77",     stance:"skeptical", finance:"neutral", subjectivity:"resist", governance:"silent",
+      quote:"Due considerations should be given to availability and stability of the statistical indicators with greater priority placed on the objective and quantifiable indicators… It is essential to make effective use of authoritative data such as statistics from the UN and official government sources." },
+    { name:"United Kingdom",        speakerType:"delegation", bloc:"other",   stance:"cautious", finance:"neutral", subjectivity:"welcome", governance:"technical",
+      quote:"Further development should be anchored in existing statistical governance, including the UN Statistical Commission. Beyond GDP will only succeed if indicators align with national systems and decision-making." },
+    { name:"Ethiopia",              speakerType:"delegation", bloc:"african", stance:"support", finance:"pro", subjectivity:"silent", governance:"silent",
+      quote:"This important effort requires sustained investment in statistical systems, quality of real-time data availability, and a political commitment to bring this agenda to life." },
+    { name:"Bhutan",                speakerType:"delegation", bloc:"other",   stance:"support", finance:"neutral", subjectivity:"welcome", governance:"silent",
+      quote:"More than five decades ago, Bhutan propounded the development philosophy of gross national happiness, not as a rejection of material progress, but in recognition that the purpose of development is the flourishing of human beings." },
+    { name:"Colombia",              speakerType:"delegation", bloc:"g77",     stance:"support", finance:"pro", subjectivity:"silent", governance:"silent",
+      quote:"Beyond GDP must be integrated into the global framework of SDGs indicators and must be rooted in the work of the statistical commission which will avoid parallel structures and additional reporting burdens." },
+    { name:"Sudan",                 speakerType:"delegation", bloc:"african", stance:"support", finance:"pro", subjectivity:"silent", governance:"silent",
+      quote:"Ambition without data is rhetoric. We call on this process to produce concrete commitments on financing for national statistical offices, on South-South cooperation, and on the international coordination mechanisms needed to close data gaps." },
+    { name:"Children & Youth Intl (NGO)", speakerType:"secretariat", bloc:"secretariat", stance:"silent", finance:"silent", subjectivity:"silent", governance:"silent",
+      quote:"The intergovernmental process launched today must ensure that these metrics inform approaches to special drawing rights, vulnerability, debt, and development financing frameworks." }
+  ];
+
+  // ─── MEETING STATE ────────────────────────────────────────────────────────
+  const MEETINGS = {
+    march: {
+      id: "march",
+      label: "4 March 2026 — GA Briefing",
+      data: DATA_MARCH,
+      description: "Informal GA plenary briefing on the HLEG interim report. 24 speakers. PGA Baerbock presiding."
+    },
+    may: {
+      id: "may",
+      label: "7 May 2026 — Open Consultation",
+      data: DATA_MAY,
+      description: "First open intergovernmental consultation on the HLEG final report. 35 speakers including NGO. Co-facilitators Rodriguez-Birkett (Guyana) and Gomez-Hernandez (Spain) presiding."
+    }
+  };
+
+  let activeMeeting = "march";
+  let activePlotMeeting = "march";
+
+  // ─── CARD RENDERING ───────────────────────────────────────────────────────
+  const grid        = document.getElementById('country-grid');
+  const search      = document.getElementById('country-search');
+  const chips       = Array.from(document.querySelectorAll('.chip'));
+  const countEl     = document.getElementById('result-count');
+  const metaBar     = document.getElementById('meeting-meta');
+  let activeFilter  = 'all';
+
+  const STANCE_LABELS = { support:"Supportive", cautious:"Cautious", skeptical:"Skeptical", silent:"Silent / Inaudible" };
+  const BLOC_LABELS   = { g77:"G77", african:"African Group", aosis:"AOSIS", eu:"EU", cans:"CANS", "lmg-mic":"LMG MIC", other:"Other", secretariat:"Secretariat / Chair" };
+
+  function stanceBadgeClass(stance) {
+    if (stance === "silent") return "silent-badge";
+    return "";
+  }
+
+  function buildCards(meetingId) {
+    const meeting = MEETINGS[meetingId];
+    const data    = meeting.data;
+    metaBar.textContent = meeting.description;
+    grid.innerHTML = "";
+
+    data.forEach(d => {
+      const article = document.createElement('article');
+      article.className = "card";
+      if (d.speakerType === "secretariat") article.classList.add("secretariat-card");
+      if (d.stance === "silent") article.classList.add("silent-card");
+      article.dataset.bloc    = d.bloc;
+      article.dataset.stance  = d.stance;
+      article.dataset.finance = d.finance;
+      article.dataset.name    = d.name.toLowerCase();
+
+      const roleLabel = d.speakerType === "secretariat" ? " · Chair/Secretariat" : "";
+      const stanceLabel = d.stance === "silent"
+        ? (d.quote && d.quote.startsWith("[Transcript inaudible") ? "Inaudible" : "Did not speak at this meeting")
+        : STANCE_LABELS[d.stance];
+
+      const badgeCls = stanceBadgeClass(d.stance);
+      const blocLabel = BLOC_LABELS[d.bloc] || d.bloc;
+
+      article.innerHTML = `
+        <h4>${d.name}</h4>
+        <div class="badge-row">
+          <span class="badge ${badgeCls}">${stanceLabel}${d.stance !== "silent" ? " · " + blocLabel : ""}${roleLabel}</span>
+          ${d.finance === "pro"  ? '<span class="badge" style="--accent:var(--blue);--accent-bg:var(--blue-soft)">Finance-pro</span>' : ""}
+          ${d.finance === "anti" ? '<span class="badge" style="--accent:var(--orange);--accent-bg:var(--orange-soft)">Finance-anti</span>' : ""}
+        </div>
+        <p>${d.quote || ""}</p>`;
+      grid.appendChild(article);
+    });
+
+    applyFilter();
+  }
+
+  function applyFilter() {
+    const q = search.value.trim().toLowerCase();
+    const cards = Array.from(grid.querySelectorAll('.card'));
+    let visible = 0;
+    cards.forEach(card => {
+      const text = (card.querySelector('h4').textContent + " " + card.querySelector('p').textContent).toLowerCase();
+      const matchText = !q || text.includes(q);
+      let matchChip = true;
+      if (activeFilter !== 'all') {
+        if (['support','cautious','skeptical'].includes(activeFilter)) {
+          matchChip = card.dataset.stance === activeFilter;
+        } else if (['pro','anti'].includes(activeFilter)) {
+          matchChip = card.dataset.finance === activeFilter;
+        }
+      }
+      const show = matchText && matchChip;
+      card.hidden = !show;
+      if (show) visible++;
+    });
+    countEl.textContent = "Showing " + visible + " of " + cards.length;
+  }
+
+  search.addEventListener('input', applyFilter);
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      activeFilter = chip.dataset.filter;
+      chips.forEach(c => c.setAttribute('aria-pressed', c === chip ? 'true' : 'false'));
+      applyFilter();
+    });
+  });
+
+  // Meeting tab switching — cards
+  document.getElementById('tab-march').addEventListener('click', () => switchCardMeeting('march'));
+  document.getElementById('tab-may').addEventListener('click',   () => switchCardMeeting('may'));
+
+  function switchCardMeeting(id) {
+    activeMeeting = id;
+    document.getElementById('tab-march').setAttribute('aria-selected', id === 'march' ? 'true' : 'false');
+    document.getElementById('tab-may').setAttribute('aria-selected',   id === 'may'   ? 'true' : 'false');
+    search.value = "";
+    activeFilter = 'all';
+    chips.forEach(c => c.setAttribute('aria-pressed', c.dataset.filter === 'all' ? 'true' : 'false'));
+    buildCards(id);
+  }
+
+  // ─── PLOT ─────────────────────────────────────────────────────────────────
+  const AXES = {
+    finance:      { label:"Finance-link",          buckets:["anti","neutral","pro"],          labels:["Anti","Silent / Neutral","Pro"] },
+    subjectivity: { label:"Indicator subjectivity",buckets:["resist","silent","welcome"],     labels:["Resist","Silent","Welcome"] },
+    governance:   { label:"Governance venue",      buckets:["technical","silent","political"], labels:["Technical (StatComm)","Silent","Political (GA)"] },
+    stance:       { label:"Stance intensity",      buckets:["skeptical","cautious","support"], labels:["Skeptical","Cautious","Supportive"] }
+  };
+
+  const AXIS_INFO = {
+    finance: {
+      title: "Finance-link",
+      def: "Whether a delegation explicitly wants Beyond GDP metrics to influence access to international concessional finance.",
+      rows: [
+        { label:"Pro (top)",              desc:"Wants metrics to reshape how international finance is allocated — typically developing nations who see GDP-only rules as locking them out of cheap capital." },
+        { label:"Silent / Neutral (mid)", desc:"No clear position stated on the finance link." },
+        { label:"Anti (bottom)",          desc:"Opposes linking the framework to financing decisions — typically donor nations worried about new conditionalities." }
+      ]
+    },
+    subjectivity: {
+      title: "Indicator subjectivity",
+      def: "Whether a delegation is comfortable including subjective well-being indicators alongside objective statistical measures.",
+      rows: [
+        { label:"Welcome (top)",  desc:"Actively supports subjective well-being data; sees human flourishing as a legitimate policy target." },
+        { label:"Silent (mid)",   desc:"No explicit position recorded." },
+        { label:"Resist (bottom)",desc:"Pushes back on subjective indicators as politically malleable or unmeasurable with rigour." }
+      ]
+    },
+    governance: {
+      title: "Governance venue",
+      def: "Which UN body a delegation believes should own and govern the Beyond GDP framework.",
+      rows: [
+        { label:"Political / GA (top)",       desc:"Wants the UN General Assembly — where all member states have equal votes — to lead." },
+        { label:"Silent (mid)",               desc:"No explicit preference stated." },
+        { label:"Technical / StatComm (bot)", desc:"Prefers the UN Statistical Commission or a technical expert body to govern the process." }
+      ]
+    }
+  };
+
+  const plotEl    = document.getElementById('plot-grid');
+  const ySel      = document.getElementById('axis-y');
+  const legendEl  = document.getElementById('plot-legend');
+  const explainer = document.getElementById('axis-explainer');
+
+  const EYE_SVG = `<svg class="ae-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>`;
+
+  function hash(str) {
+    let h = 2166136261;
+    for (let i = 0; i < str.length; i++) { h ^= str.charCodeAt(i); h = Math.imul(h, 16777619); }
+    return (h >>> 0);
+  }
+  // Pre-compute stable jitter from union of all names
+  const allNames = new Set([...DATA_MARCH.map(d=>d.name), ...DATA_MAY.map(d=>d.name)]);
+  const jitter = {};
+  allNames.forEach(name => {
+    const h = hash(name);
+    jitter[name] = { x: 15 + (h % 70), y: 15 + ((h >>> 8) % 70) };
+  });
+
+  const floatTip = document.getElementById('dot-float-tip');
+
+  function showTip(dot, name, stanceText) {
+    floatTip.setAttribute('aria-hidden','false');
+    floatTip.innerHTML = `<strong>${name}</strong>${stanceText}`;
+    floatTip.style.opacity = '1';
+    moveTip(dot);
+  }
+  function moveTip(dot) {
+    const r = dot.getBoundingClientRect();
+    const tw = 240, th = floatTip.offsetHeight || 60;
+    let left = r.left + r.width / 2 - tw / 2;
+    let top  = r.top - th - 8;
+    if (top < 8) top = r.bottom + 8;
+    left = Math.max(8, Math.min(left, window.innerWidth - tw - 8));
+    floatTip.style.left = left + 'px';
+    floatTip.style.top  = top  + 'px';
+  }
+  function hideTip() { floatTip.style.opacity = '0'; floatTip.setAttribute('aria-hidden','true'); }
+
+  function renderExplainer() {
+    const info = AXIS_INFO[ySel.value];
+    if (!info) { explainer.innerHTML = ''; return; }
+    explainer.innerHTML = `
+      <div class="ae-header">${EYE_SVG}<span class="ae-title">${info.title} — what this dimension measures</span></div>
+      <p class="ae-def">${info.def}</p>
+      <div class="ae-rows">
+        ${info.rows.map(r => `<div class="ae-row"><span class="ae-row-label">${r.label}</span><span class="ae-row-desc">${r.desc}</span></div>`).join('')}
+      </div>`;
+  }
+
+  function renderPlot(meetingId) {
+    const data = MEETINGS[meetingId].data.filter(d => d.speakerType === "delegation" && d.stance !== "silent");
+    const xAxis = AXES['stance'];
+    const yAxis = AXES[ySel.value];
+
+    plotEl.innerHTML = '';
+
+    const yLab = document.createElement('div'); yLab.className = 'axis-label y'; yLab.textContent = yAxis.label; plotEl.appendChild(yLab);
+    const xLab = document.createElement('div'); xLab.className = 'axis-label x'; xLab.textContent = xAxis.label; plotEl.appendChild(xLab);
+
+    xAxis.labels.forEach((lab, i) => {
+      const h = document.createElement('div'); h.className = 'col-head';
+      h.style.gridColumn = String(i + 3); h.style.gridRow = '4';
+      h.textContent = lab; plotEl.appendChild(h);
+    });
+    yAxis.labels.slice().reverse().forEach((lab, i) => {
+      const h = document.createElement('div'); h.className = 'row-head';
+      h.style.gridColumn = '2'; h.style.gridRow = String(i + 1);
+      h.textContent = lab; plotEl.appendChild(h);
+    });
+
+    const cells = {};
+    for (let yi = 0; yi < 3; yi++) {
+      for (let xi = 0; xi < 3; xi++) {
+        const cell = document.createElement('div');
+        cell.className = 'cell';
+        cell.style.gridColumn = String(xi + 3);
+        cell.style.gridRow    = String(yi + 1);
+        const inner = document.createElement('div');
+        inner.className = 'cell-inner';
+        cell.appendChild(inner);
+        plotEl.appendChild(cell);
+        const yBucket = yAxis.buckets[2 - yi];
+        const xBucket = xAxis.buckets[xi];
+        cells[xBucket + '|' + yBucket] = inner;
+      }
+    }
+
+    data.forEach(d => {
+      const xb  = d.stance;
+      const yb  = d[ySel.value];
+      const key = xb + '|' + yb;
+      const cell = cells[key];
+      if (!cell) return;
+
+      const dot = document.createElement('div');
+      dot.className  = 'dot';
+      dot.tabIndex   = 0;
+      dot.dataset.bloc   = d.bloc;
+      dot.dataset.stance = d.stance;
+      const initials = d.name.split(/[\s()\/\-]+/).filter(Boolean).slice(0,2).map(w => w[0]).join('').toUpperCase();
+      dot.textContent = initials;
+      dot.setAttribute('aria-label', d.name);
+      const j = jitter[d.name] || { x: 50, y: 50 };
+      dot.style.left = j.x + '%';
+      dot.style.top  = j.y + '%';
+      const name = d.name, quote = d.quote || '';
+      dot.addEventListener('mouseenter', () => showTip(dot, name, quote));
+      dot.addEventListener('mouseleave', hideTip);
+      dot.addEventListener('focus',      () => showTip(dot, name, quote));
+      dot.addEventListener('blur',       hideTip);
+      cell.appendChild(dot);
+    });
+
+    // Legend
+    const items = [["var(--bloc-g77)","G77 / China"],["var(--bloc-african)","African Group"],["var(--bloc-aosis)","AOSIS"],["var(--bloc-eu)","EU"],["var(--bloc-cans)","CANS"],["var(--bloc-lmg)","LMG MIC"],["var(--bloc-other)","Other"]];
+    legendEl.innerHTML = items.map(([c, lbl]) => `<span><span class="swatch" style="background:${c}"></span>${lbl}</span>`).join('');
+  }
+
+  // Meeting tab switching — plot
+  document.getElementById('ptab-march').addEventListener('click', () => switchPlotMeeting('march'));
+  document.getElementById('ptab-may').addEventListener('click',   () => switchPlotMeeting('may'));
+
+  function switchPlotMeeting(id) {
+    activePlotMeeting = id;
+    document.getElementById('ptab-march').setAttribute('aria-selected', id === 'march' ? 'true' : 'false');
+    document.getElementById('ptab-may').setAttribute('aria-selected',   id === 'may'   ? 'true' : 'false');
+    renderPlot(id);
+  }
+
+  ySel.addEventListener('change', () => { renderPlot(activePlotMeeting); renderExplainer(); });
+
+  // ─── EXPAND / COLLAPSE ALL ────────────────────────────────────────────────
+  const allDetails = () => document.querySelectorAll('section.block > details');
+  document.getElementById('expand-all').addEventListener('click',   () => allDetails().forEach(d => d.open = true));
+  document.getElementById('collapse-all').addEventListener('click', () => allDetails().forEach(d => d.open = false));
+
+  // ─── SCROLL SPY ───────────────────────────────────────────────────────────
+  const tocLinks = Array.from(document.querySelectorAll('nav#toc a'));
+  const sections = tocLinks.map(a => document.getElementById(a.getAttribute('href').slice(1))).filter(Boolean);
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(entries => {
+      const vis = entries.filter(e => e.isIntersecting).sort((a,b) => a.boundingClientRect.top - b.boundingClientRect.top);
+      if (vis.length) {
+        const id = vis[0].target.id;
+        tocLinks.forEach(a => {
+          if (a.getAttribute('href') === '#' + id) a.setAttribute('aria-current','location');
+          else a.removeAttribute('aria-current');
+        });
+      }
+    }, { rootMargin:'-20% 0px -65% 0px', threshold:0 });
+    sections.forEach(s => io.observe(s));
+  }
+
+  // ─── INIT ─────────────────────────────────────────────────────────────────
+  buildCards('march');
+  renderPlot('march');
+  renderExplainer();
+
+})();
+</script>
+</body>
+</html>
