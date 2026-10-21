@@ -1,0 +1,1022 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Beyond GDP: launch of the country phase &mdash; UN information session, 21 October 2026</title>
+<style>
+  :root {
+    --org-unctad: #1f5fb0;
+    --org-undp: #197b5a;
+    --org-desa: #8a3d8f;
+    --org-eosg: #8a6d1c;
+    --st-new: #197b5a;
+    --st-update: #1f5fb0;
+    --st-thread: #6a727b;
+    --bg: #f7f6f2; --surface: #ffffff; --ink: #1a1c20; --muted: #5b6470;
+    --rule: #e3e1da; --accent-default: #2e4a86;
+    --grey: #6a727b; --grey-soft: #ecedef;
+    --focus: #ffbf47; --radius: 10px;
+    --shadow: 0 1px 2px rgba(0,0,0,.04), 0 4px 12px rgba(0,0,0,.04);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin:0; font:16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color:var(--ink); background:var(--bg); }
+  a { color: var(--accent-default); }
+  a:focus-visible, button:focus-visible, summary:focus-visible { outline:3px solid var(--focus); outline-offset:2px; }
+  .skip { position:absolute; left:-9999px; top:0; background:var(--ink); color:#fff; padding:.6rem 1rem; z-index:100; }
+  .skip:focus { left:0; }
+  .shell { display:grid; grid-template-columns:250px minmax(0,1fr); gap:2rem; max-width:1240px; margin:0 auto; padding:2rem 1.25rem 4rem; }
+  @media (max-width:900px){ .shell{grid-template-columns:1fr; gap:1rem;} nav#toc{position:static !important;max-height:none !important;} }
+  @media (max-width:520px){ .shell{padding:1.25rem 1rem 3rem;} }
+  header.page { grid-column:1/-1; border-bottom:1px solid var(--rule); padding-bottom:1rem; margin-bottom:.5rem; }
+  header.page h1 { font-size:clamp(1.45rem,2.4vw,2.1rem); margin:0 0 .5rem; line-height:1.2; }
+  .format-badge { display:inline-block; vertical-align:middle; font-size:.72rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--accent-default); background:color-mix(in srgb,var(--accent-default) 9%,white); border:1px solid color-mix(in srgb,var(--accent-default) 28%,transparent); border-radius:999px; padding:.2rem .6rem; margin-left:.4rem; }
+  header.page dl.meta { display:grid; grid-template-columns:auto 1fr; gap:.15rem 1rem; margin:.75rem 0 0; color:var(--muted); font-size:.92rem; }
+  header.page dt { font-weight:600; color:var(--ink); }
+  header.page dd { margin:0; }
+  .seq-banner { grid-column:1/-1; display:flex; flex-wrap:wrap; align-items:center; gap:.5rem .75rem; background:color-mix(in srgb,var(--accent-default) 7%,white); border:1px solid color-mix(in srgb,var(--accent-default) 20%,var(--rule)); border-radius:var(--radius); padding:.7rem 1rem; margin-bottom:1rem; font-size:.88rem; color:var(--muted); }
+  .seq-banner .seq-step { display:inline-flex; align-items:center; padding:.2rem .6rem; border-radius:999px; background:var(--surface); border:1px solid var(--rule); }
+  .seq-banner .seq-step.current { background:var(--accent-default); color:#fff; border-color:var(--accent-default); font-weight:600; }
+  .seq-banner .seq-step a { color:inherit; text-decoration:none; }
+  nav#toc { position:sticky; top:1rem; align-self:start; max-height:calc(100vh - 2rem); overflow-y:auto; padding:1rem; background:var(--surface); border:1px solid var(--rule); border-radius:var(--radius); font-size:.92rem; }
+  nav#toc h2 { margin:0 0 .5rem; font-size:.78rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
+  nav#toc ol { list-style:none; padding:0; margin:0; }
+  nav#toc li { margin:.15rem 0; }
+  nav#toc a { text-decoration:none; display:block; padding:.2rem .3rem; border-radius:5px; }
+  nav#toc a:hover { background:var(--bg); }
+  nav#toc a[aria-current="location"] { background:color-mix(in srgb,var(--accent-default) 10%,white); color:var(--accent-default); font-weight:600; }
+  main { min-width:0; }
+  .global-toolbar { grid-column:1/-1; display:flex; flex-wrap:wrap; gap:1rem; align-items:center; justify-content:space-between; background:var(--surface); border:1px solid var(--rule); border-radius:var(--radius); padding:.75rem 1rem; margin-bottom:1.25rem; box-shadow:var(--shadow); }
+  .control-group { display:flex; flex-wrap:wrap; gap:.5rem; }
+  .btn { background:var(--surface); border:1px solid var(--rule); border-radius:8px; padding:.4rem .75rem; font:inherit; font-size:.88rem; cursor:pointer; color:var(--ink); }
+  .btn:hover { background:var(--bg); }
+  section.block { background:var(--surface); border:1px solid var(--rule); border-radius:var(--radius); box-shadow:var(--shadow); margin-bottom:1.25rem; overflow:hidden; }
+  section.block > details > summary { list-style:none; cursor:pointer; padding:1rem 1.25rem; display:flex; align-items:center; gap:.75rem; font-weight:600; font-size:1.1rem; user-select:none; color:var(--accent-default); }
+  section.block > details > summary::-webkit-details-marker { display:none; }
+  section.block > details > summary::before { content:"\25B8"; color:var(--muted); transition:transform .15s ease; display:inline-block; width:1ch; }
+  section.block > details[open] > summary::before { transform:rotate(90deg); }
+  .body { padding:0 1.25rem 1.25rem; }
+  .body > :first-child { margin-top:0; }
+  h3.sub { font-size:1rem; margin:1.25rem 0 .5rem; color:var(--ink); }
+  ul.tight { margin:.25rem 0 .75rem; padding-left:1.25rem; }
+  ul.tight li { margin:.35rem 0; }
+  .keybox { background:var(--bg); border:1px solid var(--rule); border-left:3px solid var(--accent-default); border-radius:8px; padding:.7rem .95rem; margin:.75rem 0; font-size:.92rem; }
+  .keybox p { margin:.3rem 0; }
+  blockquote.tp { border-left:4px solid var(--accent-default); background:var(--bg); margin:.75rem 0; padding:.75rem 1rem; font-style:italic; color:#2a2f37; border-radius:0 6px 6px 0; }
+  blockquote.tp footer { margin-top:.45rem; font-style:normal; font-size:.85rem; color:var(--muted); }
+  blockquote.tp footer .who-name { font-weight:700; }
+  table.data { width:100%; border-collapse:collapse; font-size:.88rem; margin:.75rem 0; }
+  table.data th, table.data td { text-align:left; padding:.5rem .55rem; border-bottom:1px solid var(--rule); vertical-align:top; }
+  table.data thead th { font-size:.74rem; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); }
+  table.data td.num { white-space:nowrap; color:var(--muted); font-variant-numeric:tabular-nums; }
+  .tbl-scroll { overflow-x:auto; }
+  @media (max-width:640px){
+    table.stack thead { display:none; }
+    table.stack, table.stack tbody, table.stack tr, table.stack td { display:block; width:100%; }
+    table.stack tr { border-bottom:1px solid var(--rule); padding:.5rem 0; }
+    table.stack td { border:0; padding:.2rem 0; }
+    table.stack td[data-label]::before { content:attr(data-label); display:block; font-size:.7rem; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); font-weight:600; }
+  }
+  .org-unctad { color:var(--org-unctad); font-weight:600; }
+  .org-undp { color:var(--org-undp); font-weight:600; }
+  .org-desa { color:var(--org-desa); font-weight:600; }
+  .org-eosg { color:var(--org-eosg); font-weight:600; }
+  .key { display:flex; flex-wrap:wrap; gap:.4rem 1.1rem; margin:.5rem 0 .9rem; font-size:.82rem; color:var(--muted); }
+  .key .swatch { display:inline-block; width:11px; height:11px; border-radius:50%; vertical-align:middle; margin-right:.35rem; }
+  .status { display:inline-block; font-size:.7rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase; padding:.15rem .5rem; border-radius:999px; white-space:nowrap; }
+  .st-new { color:var(--st-new); background:color-mix(in srgb,var(--st-new) 11%,white); border:1px solid color-mix(in srgb,var(--st-new) 30%,transparent); }
+  .st-update { color:var(--st-update); background:color-mix(in srgb,var(--st-update) 11%,white); border:1px solid color-mix(in srgb,var(--st-update) 30%,transparent); }
+  .st-thread { color:var(--st-thread); background:var(--grey-soft); border:1px solid #d6d8dc; }
+  .src { font-size:.78rem; color:var(--muted); }
+  .timeline { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:.75rem; margin:.75rem 0; }
+  @media (max-width:760px){ .timeline{grid-template-columns:1fr;} }
+  .tl-step { border:1px solid var(--rule); border-top:4px solid var(--grey); border-radius:8px; padding:.65rem .8rem; background:var(--surface); font-size:.88rem; }
+  .tl-step.current { border-top-color:var(--accent-default); background:color-mix(in srgb,var(--accent-default) 5%,white); }
+  .tl-step .tl-date { font-size:.74rem; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); }
+  .tl-step h4 { margin:.15rem 0 .35rem; font-size:.95rem; }
+  .tl-step p { margin:0; }
+  .dates { display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:.6rem; margin:.75rem 0; }
+  .date-card { border:1px solid var(--rule); border-radius:8px; padding:.6rem .75rem; background:var(--bg); font-size:.88rem; }
+  .date-card strong { display:block; color:var(--accent-default); font-size:.95rem; }
+  footer.page { grid-column:1/-1; margin-top:1.5rem; padding-top:1rem; border-top:1px solid var(--rule); color:var(--muted); font-style:italic; font-size:.9rem; }
+
+  /* ---- Edit mode: "Prepare your version" ---- HOUSE COMPONENT, copy verbatim.
+     Requires: --accent-default, --ink, --radius. Provides its own --edit-danger so it
+     does not depend on any readout's camp palette (the UN80 pilot borrowed
+     --camp-sceptic, which does not exist in most readouts). ---- */
+  :root { --edit-danger: #b03333; }
+  #edit-toggle { border-color:var(--accent-default); color:var(--accent-default); font-weight:600; }
+  body[data-edit-mode] #edit-toggle { background:var(--accent-default); color:#fff; }
+  #edit-controls { display:none; gap:.5rem; flex-wrap:wrap; align-items:center; }
+  body[data-edit-mode] #edit-controls { display:flex; }
+  #edit-controls .btn[disabled] { opacity:.45; cursor:default; }
+  #edit-banner { display:none; grid-column:1/-1; align-items:baseline; gap:.5rem; flex-wrap:wrap; background:color-mix(in srgb,var(--accent-default) 8%,white); border:1px solid color-mix(in srgb,var(--accent-default) 30%,transparent); border-radius:var(--radius); padding:.6rem 1rem; margin:-.5rem 0 1.25rem; font-size:.88rem; }
+  body[data-edit-mode] #edit-banner { display:flex; }
+  #edit-toast { position:fixed; left:50%; bottom:2rem; transform:translateX(-50%); background:var(--ink); color:#fff; padding:.55rem 1rem; border-radius:8px; font-size:.88rem; z-index:9999; opacity:0; transition:opacity .2s ease; pointer-events:none; }
+  body[data-edit-mode] .editable:hover { outline:1px dashed var(--accent-default); outline-offset:2px; cursor:text; }
+  body[data-edit-mode] .editable:focus { outline:2px solid var(--accent-default); outline-offset:2px; background:color-mix(in srgb,var(--accent-default) 5%,transparent); }
+  .del-target { outline:2px solid var(--edit-danger) !important; outline-offset:2px; }
+  #del-float { position:fixed; z-index:9998; display:none; width:24px; height:24px; align-items:center; justify-content:center; border-radius:50%; background:var(--edit-danger); color:#fff; border:2px solid #fff; box-shadow:0 1px 4px rgba(0,0,0,.3); cursor:pointer; font-size:.72rem; line-height:1; padding:0; }
+  .sec-del { margin-left:auto; border:1px solid var(--edit-danger); background:transparent; color:var(--edit-danger); border-radius:999px; font:inherit; font-size:.72rem; font-weight:600; padding:.2rem .6rem; cursor:pointer; }
+  .sec-del:hover { background:var(--edit-danger); color:#fff; }
+
+  /* ---- Print / save-as-PDF ---- */
+  .print-only { display:none; }
+  @media print {
+    body { background:#fff; }
+    .skip, nav#toc, .global-toolbar, #edit-banner, #del-float, #edit-toast, .sec-del, .controls, .result-count, #dot-float-tip, .ev-panel, .ev-note { display:none !important; }
+    .shell { display:block; max-width:none; padding:0 .25in; }
+    section.block { box-shadow:none; border-color:#ccc; }
+    section.block > details > summary::before { content:""; width:0; }
+    .card, blockquote.tp, .fault-line, .keybox { break-inside:avoid; page-break-inside:avoid; }
+    .plot-scroll, .plot-wrap { overflow:visible; }
+    .print-only { display:block !important; }
+  }
+</style>
+</head>
+<body data-live-url="https://christian-wandel.github.io/un-beyond-gdp-readouts/readouts/beyond-gdp-webinar-2026-10.html"
+      data-edit-slug="beyond-gdp-webinar-2026-10">
+
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="shell">
+
+  <header class="page">
+    <h1>Beyond GDP: the UN launches the country phase <span class="format-badge">Information webinar</span></h1>
+    <dl class="meta">
+      <dt>Event</dt><dd>Launch of a new phase: Advancing the development and use of metrics for policymaking beyond GDP (information session 1 of 2)</dd>
+      <dt>Organisers</dt><dd>UNCTAD, UNDP and UN DESA, with the Executive Office of the Secretary-General, Regional Commissions and UN country teams</dd>
+      <dt>Date</dt><dd>21 October 2026, 14:00&ndash;15:30 UTC &middot; online (Zoom) &middot; 90 minutes</dd>
+      <dt>Source</dt><dd><a href="https://unctad.org/meeting/launch-new-phase-advancing-development-and-use-metrics-policymaking-beyond-gdp">UNCTAD event page</a> (programme, concept note, expression-of-interest note) &middot;
+        <a href="../methodology/beyond-gdp-webinar-methodology.html">Methodology and limitations</a></dd>
+    </dl>
+  </header>
+
+  <div class="seq-banner" aria-label="Meeting sequence">
+    <span>Beyond GDP sequence:</span>
+    <span class="seq-step"><a href="beyond-gdp-ga-briefing-2026-03.html">1 &middot; 4 Mar 2026 &mdash; GA briefing</a></span>
+    <span aria-hidden="true">&rarr;</span>
+    <span class="seq-step"><a href="beyond-gdp-consultation-public.html">2 &middot; 7 May 2026 &mdash; Open consultation</a></span>
+    <span aria-hidden="true">&rarr;</span>
+    <span class="seq-step"><a href="beyond-gdp-panel-public-2026-07.html">3 &middot; Jul 2026 &mdash; HLPF panel</a></span>
+    <span aria-hidden="true">&rarr;</span>
+    <span class="seq-step current">4 &middot; 21 Oct 2026 &mdash; Country-phase launch</span>
+  </div>
+
+  <div class="global-toolbar">
+    <div class="control-group">
+      <button class="btn" id="expand-all" type="button">Expand all</button>
+      <button class="btn" id="collapse-all" type="button">Collapse all</button>
+    </div>
+      <div class="control-group" id="edit-controls" role="group" aria-label="Edit and export controls">
+        <button class="btn" id="edit-undo" type="button" disabled>Undo remove</button>
+        <button class="btn" id="edit-redo" type="button" disabled>Redo</button>
+        <button class="btn" id="edit-download" type="button">Download HTML</button>
+        <button class="btn" id="edit-pdf" type="button">Save as PDF</button>
+        <button class="btn" id="edit-copy" type="button">Copy for Word</button>
+      </div>
+      <div class="control-group">
+        <button class="btn" id="edit-toggle" type="button">Prepare your version</button>
+      </div>
+  </div>
+
+    <div id="edit-banner" role="status">
+      <strong>Edit mode.</strong>
+      <span>Click any paragraph to edit its text. Hover over an item and use the red &#10005; to remove it, or use
+      &ldquo;Remove section&rdquo; in a section title. Changes stay in your browser until you download, print or copy
+      your version &mdash; the published readout is not affected.</span>
+    </div>
+
+  <nav id="toc" aria-label="On this page">
+    <h2>On this page</h2>
+    <ol>
+      <li><a href="#about">1. What this webinar was</a></li>
+      <li><a href="#summary">2. Executive summary</a></li>
+      <li><a href="#new">3. What is new</a></li>
+      <li><a href="#presented">4. What was presented</a></li>
+      <li><a href="#questions">5. Audience questions</a></li>
+      <li><a href="#fits">6. Where this fits</a></li>
+      <li><a href="#quotes">7. Key quotes</a></li>
+      <li><a href="#next">8. Next steps for readers</a></li>
+    </ol>
+  </nav>
+
+  <main id="main">
+
+    <!-- ============================================ 1. ABOUT -->
+    <section class="block" id="about">
+      <details open>
+        <summary>1. What this webinar was</summary>
+        <div class="body">
+          <div class="keybox">
+            <p><strong>An information session, not a negotiation.</strong> Three UN agencies presented a new
+            support offer for countries that want to test the Beyond GDP dashboard. No member state spoke.
+            The audience typed questions into the Zoom Q&amp;A, and the moderator read them out.</p>
+            <p><strong>Why it matters.</strong> The UN now runs a country track next to the General Assembly
+            process. Countries can join it before any resolution.</p>
+          </div>
+          <p>The Deputy Secretary-General, <span class="org-eosg">Amina J. Mohammed</span>, opened by video.
+          <span class="org-unctad">Anu Peltola</span> (UNCTAD) hosted.
+          <span class="org-unctad">Daniel Hopp</span> (UNCTAD) presented the dashboard and moderated the questions.
+          <span class="org-undp">Heriberto Tapia</span> (UNDP) presented the policy side and the next steps.
+          <span class="org-desa">Shantanu Mukherjee</span> (UN DESA) spoke on the statistical and intergovernmental track.</p>
+          <div class="key" aria-label="Colour key">
+            <span><span class="swatch" style="background:var(--org-unctad)"></span>UNCTAD</span>
+            <span><span class="swatch" style="background:var(--org-undp)"></span>UNDP</span>
+            <span><span class="swatch" style="background:var(--org-desa)"></span>UN DESA</span>
+            <span><span class="swatch" style="background:var(--org-eosg)"></span>Deputy Secretary-General</span>
+          </div>
+          <p>The UN held the same session twice for different time zones. This readout covers the first session.
+          The second session ran on 22 October at 07:00 UTC with the same programme.</p>
+        </div>
+      </details>
+    </section>
+
+    <!-- ============================================ 2. EXECUTIVE SUMMARY -->
+    <section class="block" id="summary">
+      <details open>
+        <summary>2. Executive summary</summary>
+        <div class="body">
+          <p>Five months after <em>Counting What Counts</em>, the UN moves part of the work from New York to
+          the countries. UNCTAD, UNDP and DESA offer pilot support, an online hub and a peer-learning network.
+          The intergovernmental process continues in parallel, but the speakers gave no date for its next step.</p>
+          <ul class="tight">
+            <li><strong>A country track starts now.</strong> The offer is voluntary. Pilot support goes to a
+            limited number of countries. Every country can use the hub.</li>
+            <li><strong>The next deadline is 30 November 2026.</strong> Countries send an expression of
+            interest by then. Focus pilots start in December. The hub launches in December or January.</li>
+            <li><strong>The General Assembly track waits for co-facilitators.</strong> DESA says the President of
+            the General Assembly has not yet appointed them for this session. The elements paper is out.</li>
+            <li><strong>There is no reporting obligation and no global data release.</strong> The UN calls the
+            dashboard a proposal for country testing. It holds back country data so that countries can check
+            their own figures first.</li>
+            <li><strong>The headline-index question stays open.</strong> The elements paper lists three options
+            and picks none. The pilots can give evidence for the choice.</li>
+          </ul>
+        </div>
+      </details>
+    </section>
+
+    <!-- ============================================ 3. WHAT IS NEW -->
+    <section class="block" id="new">
+      <details open>
+        <summary>3. What is new since the July panel</summary>
+        <div class="body">
+          <p>Each item is checked against the three earlier Beyond GDP readouts. <span class="status st-new">New</span>
+          means the earlier readouts do not carry it. <span class="status st-update">Update</span> means it changes
+          an earlier item. <span class="status st-thread">Through-line</span> means it continues an earlier theme.</p>
+          <div class="tbl-scroll">
+          <table class="data stack">
+            <thead><tr><th>Item</th><th>Status</th><th>What was said</th><th>Why it matters</th></tr></thead>
+            <tbody>
+              <tr>
+                <td data-label="Item"><strong>Country track</strong></td>
+                <td data-label="Status"><span class="status st-new">New</span></td>
+                <td data-label="What was said">The <span class="org-eosg">Deputy Secretary-General</span> describes
+                a voluntary platform, led by UNCTAD and UNDP. It offers pilot support to a limited number of countries,
+                a community of practice and an online repository (full quote below).</td>
+                <td data-label="Why it matters">Work at country level starts before a General Assembly decision.</td>
+              </tr>
+              <tr>
+                <td data-label="Item"><strong>Dates</strong></td>
+                <td data-label="Status"><span class="status st-new">New</span></td>
+                <td data-label="What was said">The expression-of-interest form opened at 15:30 UTC on 21 October.
+                The first deadline is 30 November 2026. Later forms are taken on a rolling basis. Focus pilots start
+                in December 2026. The hub launch is marked for December 2026 to January 2027. <span class="org-undp">Tapia</span> says the pilots
+                scale up in 2027.</td>
+                <td data-label="Why it matters">This is the next deadline after the 10 August elements-paper input.</td>
+              </tr>
+              <tr>
+                <td data-label="Item"><strong>Who does what</strong></td>
+                <td data-label="Status"><span class="status st-new">New</span></td>
+                <td data-label="What was said"><span class="org-unctad">UNCTAD</span>: statistical guidance, compilation
+                tools and the hub. <span class="org-undp">UNDP</span>: policy applications and country case studies.
+                <span class="org-desa">UN DESA</span>: global follow-up and the Statistical Commission. A slide lists the
+                donors as &ldquo;China, 2030 Agenda for Sustainable Development Sub-Fund of the UN Peace and Development
+                Fund&rdquo;.</td>
+                <td data-label="Why it matters">Readers know whom to contact for data, for policy and for the global process.</td>
+              </tr>
+              <tr>
+                <td data-label="Item"><strong>State of the GA process</strong></td>
+                <td data-label="Status"><span class="status st-update">Update</span></td>
+                <td data-label="What was said"><span class="org-undp">Tapia</span> says the elements paper came out &ldquo;just a few weeks
+                ago&rdquo;, from &ldquo;way more than 100 contributions&rdquo;. <span class="org-desa">Mukherjee</span>
+                says the co-facilitators for this session are not yet appointed (full quote below).
+                <span class="org-unctad">Peltola</span> says member states decide the next steps, and she is unsure how far this session gets (full quote below).</td>
+                <td data-label="Why it matters">In July, Spain and Guyana co-facilitated and the input call was open.
+                The process now sits between two co-facilitation terms. The aim is still a GA resolution.</td>
+              </tr>
+              <tr>
+                <td data-label="Item"><strong>Headline index</strong></td>
+                <td data-label="Status"><span class="status st-update">Update</span></td>
+                <td data-label="What was said">A UNDP slide: &ldquo;The Elements Paper records the options &mdash; none,
+                a few, a single aggregate &mdash; without settling them.&rdquo; <span class="org-undp">Tapia</span> says the pilots can show how countries
+                use composite indicators. <span class="org-desa">Mukherjee</span> asks how valid a composite is for its intended use.</td>
+                <td data-label="Why it matters">In July the question was raised. It is now written into the negotiating
+                text as three options, and country pilots become an evidence source.</td>
+              </tr>
+              <tr>
+                <td data-label="Item"><strong>What member states ask for</strong></td>
+                <td data-label="Status"><span class="status st-new">New</span></td>
+                <td data-label="What was said">A UNDP slide sums up the consultations in four asks.
+                <strong>Coherence</strong>: &ldquo;Dock into the existing data ecosystem (SDGs, MVI, HDI, SNA, SEEA)&rdquo;,
+                with the Statistical Commission as the technical venue. <strong>Ownership</strong>: &ldquo;A common,
+                comparable core with a flexible national periphery: country-owned additions, not modifications. The point
+                with the broadest agreement.&rdquo; <strong>Policy relevance</strong>: planning, budgets, finance allocation.
+                <strong>Capacity</strong>: &ldquo;Sequencing and support, not lower ambition.&rdquo;</td>
+                <td data-label="Why it matters">This is the first UN summary of the consultations. It names national
+                ownership as the widest common ground, which matches the May consultation.</td>
+              </tr>
+              <tr>
+                <td data-label="Item"><strong>No reporting obligation, no global data yet</strong></td>
+                <td data-label="Status"><span class="status st-new">New</span></td>
+                <td data-label="What was said"><span class="org-unctad">Hopp</span> calls the dashboard a proposal for
+                country testing, not a universal reporting obligation (full quote below). <span class="org-unctad">Peltola</span>
+                says the UN reviewed data availability but does not publish country data yet. There is no
+                intergovernmental decision on when reporting starts (full quote below).</td>
+                <td data-label="Why it matters">This speaks to the concern, raised in May, that the metrics could be
+                imposed on countries.</td>
+              </tr>
+              <tr>
+                <td data-label="Item"><strong>The data behind the 31 indicators</strong></td>
+                <td data-label="Status"><span class="status st-new">New</span></td>
+                <td data-label="What was said"><span class="org-unctad">Hopp</span> shows coverage per indicator, from public international sources as of
+                April 2026. He calls the figures &ldquo;preliminary and indicative&rdquo;. Examples:
+                <ul class="tight">
+                  <li>Violence against women: data for one year only, 2018.</li>
+                  <li>Biodiversity Intactness Index: no new figure since 2014.</li>
+                  <li>Household disposable income: &ldquo;only 70 to 80 countries&rdquo; report it to UNSD.</li>
+                  <li>Wealth share of the top 1%: &ldquo;only about 30% of countries&rdquo; have survey or wealth-account figures. The rest is modelled.</li>
+                  <li>Life satisfaction and loneliness: mainly from the Gallup World Poll. The HLEG wants country-led surveys.</li>
+                </ul>
+                A slide says coverage is lowest for sustainability and resilience, at about 1 in 3 developing countries.
+                Several indicators lag 2 to 4 years.</td>
+                <td data-label="Why it matters">These figures put numbers on the capacity concern that delegations raised
+                in March and May. <span class="org-unctad">Hopp</span> says countries can start with a small set of indicators (full quote below).</td>
+              </tr>
+              <tr>
+                <td data-label="Item"><strong>A 2027 target</strong></td>
+                <td data-label="Status"><span class="status st-new">New</span></td>
+                <td data-label="What was said"><span class="org-unctad">Hopp</span> recalls that the HLEG report asks governments to &ldquo;establish
+                national progress measuring initiatives by 2027&rdquo;.</td>
+                <td data-label="Why it matters">The earlier readouts do not carry this date. It is in the report, and the
+                pilots run inside that window.</td>
+              </tr>
+              <tr>
+                <td data-label="Item"><strong>Finance link</strong></td>
+                <td data-label="Status"><span class="status st-thread">Through-line</span></td>
+                <td data-label="What was said">No speaker discussed the finance link head-on. It appears in three places:
+                the Global Alliance, which aims to inform &ldquo;development financing considerations&rdquo;; the &ldquo;finance
+                allocation&rdquo; line on the member-state slide; and <span class="org-undp">Tapia</span>&rsquo;s point that the use of pilot results
+                for international cooperation is &ldquo;an open question&rdquo;.</td>
+                <td data-label="Why it matters">The finance link was the main fault line in May. The country track does
+                not settle it, so it stays with the General Assembly process.</td>
+              </tr>
+              <tr>
+                <td data-label="Item"><strong>Poverty data</strong></td>
+                <td data-label="Status"><span class="status st-new">New</span></td>
+                <td data-label="What was said"><span class="org-undp">Tapia</span> says the latest global Multidimensional Poverty Index update, released
+                &ldquo;a few days ago&rdquo;, shows multidimensional poverty &ldquo;increasing for the first time&rdquo;.
+                He notes that more than 50 countries use a national MPI.</td>
+                <td data-label="Why it matters"><span class="org-undp">Tapia</span> uses it to show what income figures can miss. Check the HDRO/OPHI
+                release before citing the figure.</td>
+              </tr>
+              <tr>
+                <td data-label="Item"><strong>Tools and partners</strong></td>
+                <td data-label="Status"><span class="status st-new">New</span></td>
+                <td data-label="What was said">A five-phase self-assessment toolkit; practice examples from Canada (budget
+                proposals), Italy (fiscal planning), Bhutan (policy screening) and Wales (statutory objectives); the Youth
+                Moving Beyond GDP network (Beyond Lab at UN Geneva, UNCTAD, Rethinking Economics International); IISD and
+                OECD as partners.</td>
+                <td data-label="Why it matters">This is what a country gets when it joins.</td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+          <p class="src">Repeats from earlier readouts are left out: GDP alone is not enough; 31 indicators in four
+          components, 15 from the SDGs; the history from SDG target 17.19 to the Pact for the Future; the existence
+          of the Global Alliance.</p>
+        </div>
+      </details>
+    </section>
+
+    <!-- ============================================ 4. WHAT WAS PRESENTED -->
+    <section class="block" id="presented">
+      <details>
+        <summary>4. What was presented</summary>
+        <div class="body">
+          <p>One row per speaker, in speaking order. Times are minutes from the start of the session.</p>
+          <div class="tbl-scroll">
+          <table class="data stack">
+            <thead><tr><th>Speaker</th><th>Role</th><th>What they set out</th></tr></thead>
+            <tbody>
+              <tr>
+                <td data-label="Speaker"><span class="org-eosg">Amina J. Mohammed</span><br><span class="src">2:30, video</span></td>
+                <td data-label="Role">UN Deputy Secretary-General</td>
+                <td data-label="What they set out">The initiative answers member-state calls from 18 months of consultations.
+                It is voluntary and country-driven. She asks countries to send an expression of interest and to join the
+                peer-learning network.</td>
+              </tr>
+              <tr>
+                <td data-label="Speaker"><span class="org-unctad">Anu Peltola</span><br><span class="src">0:04 and 5:28</span></td>
+                <td data-label="Role">Director of Statistics, UNCTAD; host</td>
+                <td data-label="What they set out">The session has three aims: introduce the dashboard, introduce the
+                support offer, and start a peer-learning network. The goal is measures that national statistical systems
+                produce and that governments use in &ldquo;decisions, plans, budgets and policy&rdquo;.</td>
+              </tr>
+              <tr>
+                <td data-label="Speaker"><span class="org-unctad">Daniel Hopp</span><br><span class="src">8:28</span></td>
+                <td data-label="Role">Data scientist, UNCTAD; member of the HLEG co-secretariat; moderator</td>
+                <td data-label="What they set out">The framework and the dashboard, component by component. Tiers follow
+                the SDG model. Foundational principles: 5 indicators (3 Tier I, 2 Tier II). Current well-being: 14 (10, 4).
+                Equity and inclusion: 6 (3, 3). Sustainability and resilience: 6 (4, 2). The data gaps per indicator are
+                in section 3. He closes with the HLEG asks to governments, the statistical community and civil society.</td>
+              </tr>
+              <tr>
+                <td data-label="Speaker"><span class="org-undp">Heriberto Tapia</span><br><span class="src">22:34</span></td>
+                <td data-label="Role">Head of Research, Human Development Report Office, UNDP</td>
+                <td data-label="What they set out">The aim is better policy, not better indicators for their own sake
+                (full quote below). The country pilots are bottom-up and look at seven areas: policy relevance of existing
+                indicators; links to plans, budgets and sector strategies; composite indices; subnational and disaggregated
+                data, designed in from the start; AI and satellite data; people&rsquo;s own view of their lives (a slide
+                cites &ldquo;7 in 10 people&rdquo; who feel they have little influence on government decisions, from HDR
+                2023/24); and communication, with Beyond GDP figures reported as often and as prominently as GDP figures. The pilots are built so that results can be combined for the global process.</td>
+              </tr>
+              <tr>
+                <td data-label="Speaker"><span class="org-unctad">Anu Peltola</span><br><span class="src">42:13</span></td>
+                <td data-label="Role">UNCTAD</td>
+                <td data-label="What they set out">The Beyond GDP Data for Action and Innovation Hub has three pillars: data
+                (framework, metadata, data availability), policy (country experience, community of practice) and toolkits.
+                Countries can engage as pilots, through a national focal point (usually in the statistics office), through peer
+                learning, or by sharing resources. Pilots do not need to test every indicator. The Global Alliance (Sevilla
+                Platform for Action; Spain, OECD, UNCTAD, SEGIB) and the youth network also feed the hub.</td>
+              </tr>
+              <tr>
+                <td data-label="Speaker"><span class="org-desa">Shantanu Mukherjee</span><br><span class="src">1:14 and 1:18</span></td>
+                <td data-label="Role">Director, UN Statistics Division, UN DESA</td>
+                <td data-label="What they set out">Measurement changes as new data arrives; the MPI is his example. National
+                measures can serve national policy, but DESA must keep measures comparable across countries (full quote below).
+                The Statistical Commission runs the technical track. The co-facilitators for the GA track are not yet appointed.
+                He names the HLPF and the voluntary national reviews as places to reach a wider audience.</td>
+              </tr>
+              <tr>
+                <td data-label="Speaker"><span class="org-undp">Heriberto Tapia</span><br><span class="src">1:20</span></td>
+                <td data-label="Role">UNDP; next steps</td>
+                <td data-label="What they set out">The dates in section 8. The self-assessment toolkit has five phases:
+                institutional setup, mapping national agencies, data availability and quality review, data collection and
+                validation, and dissemination. Its results can be combined to inform the intergovernmental process. Academics
+                can join as individuals or as expert groups.</td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+        </div>
+      </details>
+    </section>
+
+    <!-- ============================================ 5. AUDIENCE QUESTIONS -->
+    <section class="block" id="questions">
+      <details>
+        <summary>5. Audience questions</summary>
+        <div class="body">
+          <p><span class="org-unctad">Hopp</span> read the questions from the Zoom Q&amp;A in groups. The questions are paraphrased and numbered.
+          Askers are not named. Some answers came from more than one speaker.</p>
+          <div class="tbl-scroll">
+          <table class="data stack">
+            <thead><tr><th>#</th><th>Question</th><th>Answered by</th><th>Answer</th></tr></thead>
+            <tbody>
+              <tr><td class="num" data-label="#">Audience question 1</td>
+                <td data-label="Question">What are the next steps of the intergovernmental process?</td>
+                <td data-label="Answered by"><span class="org-unctad">Peltola</span></td>
+                <td data-label="Answer">Member states decide. An elements paper guides their talks. There is broad support,
+                &ldquo;but of course, there will be areas for debate.&rdquo;</td></tr>
+              <tr><td class="num" data-label="#">Audience question 2</td>
+                <td data-label="Question">Is there a schedule for the first hub webinars? Can countries present their work?</td>
+                <td data-label="Answered by"><span class="org-unctad">Peltola</span></td>
+                <td data-label="Answer">Yes. The first webinars show country good practice and come &ldquo;towards the end of
+                this year&rdquo;. The UN also briefs the resident coordinator offices in all countries.</td></tr>
+              <tr><td class="num" data-label="#">Audience question 3</td>
+                <td data-label="Question">Is the hub open to local and regional governments?</td>
+                <td data-label="Answered by"><span class="org-unctad">Peltola</span></td>
+                <td data-label="Answer">Yes. The UN wants indicators that can be localised and disaggregated below country
+                level. It will share subnational practice on the hub.</td></tr>
+              <tr><td class="num" data-label="#">Audience question 4</td>
+                <td data-label="Question">How can organisations inside or outside the UN add their tools to the hub?</td>
+                <td data-label="Answered by"><span class="org-unctad">Peltola</span></td>
+                <td data-label="Answer">Write to beyondgdp@un.org. The team reviews the tool and shares it.</td></tr>
+              <tr><td class="num" data-label="#">Audience question 5</td>
+                <td data-label="Question">Should governments set up teams? Which departments should take part?</td>
+                <td data-label="Answered by"><span class="org-unctad">Peltola</span></td>
+                <td data-label="Answer">Form a cross-agency team. Each country decides who joins, because mandates differ.
+                The national statistics office is usually well placed to coordinate.</td></tr>
+              <tr><td class="num" data-label="#">Audience question 6</td>
+                <td data-label="Question">Is there a global dashboard with the existing data?</td>
+                <td data-label="Answered by"><span class="org-unctad">Peltola</span></td>
+                <td data-label="Answer">No. The UN checked data availability. It gives countries time to review their own
+                data before it shares any data globally. Countries can start compiling now.</td></tr>
+              <tr><td class="num" data-label="#">Audience question 7</td>
+                <td data-label="Question">What if hard data improves but people say life is worse? Which signal guides policy?</td>
+                <td data-label="Answered by"><span class="org-undp">Tapia</span></td>
+                <td data-label="Answer">The dashboard exists to examine such gaps. Sometimes the objective indicator misses what
+                people feel. Sometimes the perception is wrong and people need better information. Either way, perceptions
+                &ldquo;inform their own action&rdquo;, so they count. The pilots will test this.</td></tr>
+              <tr><td class="num" data-label="#">Audience question 8</td>
+                <td data-label="Question">Should a composite index use equal weights or national weights?</td>
+                <td data-label="Answered by"><span class="org-undp">Tapia</span>, <span class="org-desa">Mukherjee</span></td>
+                <td data-label="Answer"><span class="org-undp">Tapia</span>: still open; there is a trade-off between richness and ease of communication
+                (full quote below); &ldquo;stay tuned&rdquo;. <span class="org-desa">Mukherjee</span>: decide first what the composite is for, then test
+                its validity for that use.</td></tr>
+              <tr><td class="num" data-label="#">Audience question 9</td>
+                <td data-label="Question">How is this not a duplicate of the SDGs, the Better Life Index and other dashboards?</td>
+                <td data-label="Answered by"><span class="org-undp">Tapia</span>, <span class="org-unctad">Peltola</span>, <span class="org-desa">Mukherjee</span></td>
+                <td data-label="Answer"><span class="org-undp">Tapia</span>: member states ask for coherence, and the HLEG built on earlier work. The pilots
+                will show which indicators add value and which &ldquo;bring additional burden&rdquo;. <span class="org-unctad">Peltola</span>: the framework
+                connects the national accounts, environmental accounts and well-being work. <span class="org-desa">Mukherjee</span>: Statistical Commission
+                expert groups already develop methods for these measures.</td></tr>
+            </tbody>
+          </table>
+          </div>
+        </div>
+      </details>
+    </section>
+
+    <!-- ============================================ 6. WHERE THIS FITS -->
+    <section class="block" id="fits">
+      <details>
+        <summary>6. Where this fits in the Beyond GDP sequence</summary>
+        <div class="body">
+          <div class="timeline">
+            <div class="tl-step">
+              <div class="tl-date">4 Mar 2026</div>
+              <h4><a href="beyond-gdp-ga-briefing-2026-03.html">GA briefing</a></h4>
+              <p>Interim dashboard presented. Broad, soft support. Capacity already a shared concern.</p>
+            </div>
+            <div class="tl-step">
+              <div class="tl-date">7 May 2026</div>
+              <h4><a href="beyond-gdp-consultation-public.html">Open consultation</a></h4>
+              <p>27 delegations react to the report. Fault lines on the finance link, subjective indicators and venue.</p>
+            </div>
+            <div class="tl-step">
+              <div class="tl-date">Jul 2026</div>
+              <h4><a href="beyond-gdp-panel-public-2026-07.html">HLPF panel</a></h4>
+              <p>Talk turns to implementation. Spain and Guyana open the elements-paper input call.</p>
+            </div>
+            <div class="tl-step current">
+              <div class="tl-date">21 Oct 2026</div>
+              <h4>Country-phase launch</h4>
+              <p>The UN opens a country track. The GA track waits for new co-facilitators.</p>
+            </div>
+          </div>
+          <p>The sequence now has two tracks. The <strong>General Assembly track</strong> decides the political
+          questions, including the finance link and any headline index. The <strong>country track</strong> tests the
+          indicators in practice and feeds evidence back. Speakers say both tracks inform each other, through the
+          Statistical Commission and the elements paper.</p>
+        </div>
+      </details>
+    </section>
+
+    <!-- ============================================ 7. KEY QUOTES -->
+    <section class="block" id="quotes">
+      <details>
+        <summary>7. Key quotes</summary>
+        <div class="body">
+          <blockquote class="tp">&ldquo;Your message has been clear: new metrics are only as strong as the data, systems, skills and institutions behind them.&rdquo;
+            <footer>&mdash; <span class="who-name org-eosg">Amina J. Mohammed</span>, Deputy Secretary-General (2:30, video)</footer></blockquote>
+          <blockquote class="tp">&ldquo;We will offer technical and policy support to a limited number of countries that will be piloting beyond GDP metrics.&rdquo;
+            <footer>&mdash; <span class="who-name org-eosg">Amina J. Mohammed</span>, Deputy Secretary-General</footer></blockquote>
+          <blockquote class="tp">&ldquo;This dashboard proposed by the HLEG is a proposal for country testing and refinement, and does not represent a complete universal reporting obligation.&rdquo;
+            <footer>&mdash; <span class="who-name org-unctad">Daniel Hopp</span>, UNCTAD (9:00)</footer></blockquote>
+          <blockquote class="tp">&ldquo;Data gaps should inform statistical development plans rather than discourage countries from beginning.&rdquo;
+            <footer>&mdash; <span class="who-name org-unctad">Daniel Hopp</span>, UNCTAD (20:44)</footer></blockquote>
+          <blockquote class="tp">&ldquo;The main goal of this Beyond GDP agenda is not to develop a better set of indicators that have value in themselves. The ultimate goal is to be able to improve the way countries conduct policies.&rdquo;
+            <footer>&mdash; <span class="who-name org-undp">Heriberto Tapia</span>, UNDP (25:57)</footer></blockquote>
+          <blockquote class="tp">&ldquo;It remains to be seen how much they will be able to advance that discussion during this session of the General Assembly, which was just launched in September.&rdquo;
+            <footer>&mdash; <span class="who-name org-unctad">Anu Peltola</span>, UNCTAD, answering audience question 1 (57:40)</footer></blockquote>
+          <blockquote class="tp">&ldquo;There&rsquo;s no commitment and there&rsquo;s no decision yet from the intergovernmental process as in when that should start.&rdquo;
+            <footer>&mdash; <span class="who-name org-unctad">Anu Peltola</span>, UNCTAD, answering audience question 6 (1:04:38)</footer></blockquote>
+          <blockquote class="tp">&ldquo;The dashboard is way richer. The composite indicator is much easier to communicate.&rdquo;
+            <footer>&mdash; <span class="who-name org-undp">Heriberto Tapia</span>, UNDP, answering audience question 8 (1:09:11)</footer></blockquote>
+          <blockquote class="tp">&ldquo;It may be perfectly adequate to use national measures, because that helps their policymaking. But we also have a responsibility on the international comparability side.&rdquo;
+            <footer>&mdash; <span class="who-name org-desa">Shantanu Mukherjee</span>, UN DESA (1:16:14)</footer></blockquote>
+          <blockquote class="tp">&ldquo;We are waiting for the appointment of co-facilitators by the President of the General Assembly, who will lead the discussions leading to a resolution on how to take forward the work of the high-level group.&rdquo;
+            <footer>&mdash; <span class="who-name org-desa">Shantanu Mukherjee</span>, UN DESA (1:19:05)</footer></blockquote>
+          <blockquote class="tp">&ldquo;This is not only a technical or statistics or data agenda. More than that, this is linking data to decision making and policy needs.&rdquo;
+            <footer>&mdash; <span class="who-name org-unctad">Anu Peltola</span>, UNCTAD, closing (1:28:49)</footer></blockquote>
+          <p class="src">Quotes come from a local Whisper transcript of the session recording. Each quote was checked
+          against the audio. Punctuation is added for reading.</p>
+        </div>
+      </details>
+    </section>
+
+    <!-- ============================================ 8. NEXT STEPS -->
+    <section class="block" id="next">
+      <details>
+        <summary>8. Next steps for readers</summary>
+        <div class="body">
+          <div class="dates">
+            <div class="date-card"><strong>21 Oct 2026</strong>Expression-of-interest form opens (15:30 UTC)</div>
+            <div class="date-card"><strong>30 Nov 2026</strong>First deadline. Later forms are taken on a rolling basis.</div>
+            <div class="date-card"><strong>Dec 2026</strong>Focus pilots start (indicative)</div>
+            <div class="date-card"><strong>Dec 2026 &ndash; Jan 2027</strong>Hub launch and peer learning (indicative)</div>
+            <div class="date-card"><strong>2027</strong>Pilots scale up. HLEG target for national initiatives.</div>
+          </div>
+          <ul class="tight">
+            <li><strong>Countries:</strong> name a focal institution, usually the statistics office, and send one
+            coordinated expression of interest. A downloadable questionnaire helps coordination across agencies. The form
+            and the background note are on the <a href="https://unctad.org/meeting/launch-new-phase-advancing-development-and-use-metrics-policymaking-beyond-gdp">UNCTAD event page</a>.</li>
+            <li><strong>Organisations with tools or case studies:</strong> write to <a href="mailto:beyondgdp@un.org">beyondgdp@un.org</a>.</li>
+            <li><strong>Readers who track the process:</strong> watch for the appointment of GA co-facilitators, and for
+            how the elements paper handles the headline-index options and the finance link.</li>
+          </ul>
+        </div>
+      </details>
+    </section>
+
+  </main>
+
+  <footer class="page">
+    Readout based on a recording of the 21 October 2026 information session and the organisers&rsquo; published
+    programme, concept note and expression-of-interest note. The transcript is a local Whisper transcript, not an
+    official UN record. Slide text was read from the video. See the
+    <a href="../methodology/beyond-gdp-webinar-methodology.html">methodology page</a>.
+  </footer>
+
+</div>
+
+<script>
+(() => {
+  const all = () => document.querySelectorAll('section.block > details');
+  document.getElementById('expand-all').addEventListener('click', () => all().forEach(d => d.open = true));
+  document.getElementById('collapse-all').addEventListener('click', () => all().forEach(d => d.open = false));
+  document.querySelectorAll('nav#toc a').forEach(a => a.addEventListener('click', () => {
+    const d = document.querySelector(a.getAttribute('href') + ' > details');
+    if (d) d.open = true;
+  }));
+  const links = Array.from(document.querySelectorAll('nav#toc a'));
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        links.forEach(l => l.toggleAttribute('aria-current', l.getAttribute('href') === '#' + e.target.id));
+        links.forEach(l => { if (l.hasAttribute('aria-current')) l.setAttribute('aria-current', 'location'); });
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+    document.querySelectorAll('section.block').forEach(s => io.observe(s));
+  }
+})();
+</script>
+<script>
+// ---- Edit mode: "Prepare your version" — local edits + export (pilot 2026-07) ----
+// Deletion undo keeps the removed node itself, so re-inserting it preserves every
+// wired event listener; text edits rely on the browser's native undo (Ctrl+Z).
+(() => {
+  // Readout-specific values are read from <body> data attributes so this block is
+  // copied verbatim into every readout. Set them in the markup, never edit them here:
+  //   <body data-live-url="https://…/readouts/<file>.html" data-edit-slug="<file-stem>">
+  const LIVE_URL = document.body.dataset.liveUrl || location.href.split('#')[0];
+  const SLUG = document.body.dataset.editSlug ||
+    (location.pathname.split('/').pop() || 'readout').replace(/\.html?$/, '');
+  const mainEl = document.querySelector('main');
+  const toggleBtn = document.getElementById('edit-toggle');
+  const undoBtn = document.getElementById('edit-undo');
+  const redoBtn = document.getElementById('edit-redo');
+  if (!mainEl || !toggleBtn) return;
+
+  // Interactive machinery is never editable or deletable
+  const EXCLUDE = '.global-toolbar, #edit-banner, .controls, .result-count, .plot-scroll, .plot-legend, .plot-guide, .axis-explainer, .ev-panel, .ev-note, details.glance';
+  const EDITABLE_SEL = 'p, li, h3, h4, blockquote';
+  const DELETABLE_SEL = '.card, blockquote.tp, .fault-line, .keybox, p, li, table.data';
+
+  let editMode = false, dirty = false;
+  const undoStack = [], redoStack = [];
+
+  const eligible = el => mainEl.contains(el) && !el.closest(EXCLUDE);
+
+  function markEditable(on) {
+    mainEl.querySelectorAll(EDITABLE_SEL).forEach(el => {
+      if (!eligible(el)) return;
+      if (on) { el.setAttribute('contenteditable', 'true'); el.classList.add('editable'); }
+      else { el.removeAttribute('contenteditable'); el.classList.remove('editable'); }
+    });
+  }
+
+  function markSections(on) {
+    mainEl.querySelectorAll('section.block > details > summary').forEach(s => {
+      const old = s.querySelector('.sec-del');
+      if (old) old.remove();
+      if (!on) return;
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = 'sec-del'; b.textContent = 'Remove section';
+      b.addEventListener('click', e => {
+        e.preventDefault(); e.stopPropagation();
+        if (confirm('Remove this whole section from your version? "Undo remove" brings it back.')) {
+          removeNode(s.closest('section.block'));
+        }
+      });
+      s.appendChild(b);
+    });
+  }
+
+  // Package bands: remove the band and every section under it in one step
+  function markPackages(on) {
+    mainEl.querySelectorAll('.pkg-band').forEach(band => {
+      const old = band.querySelector('.sec-del');
+      if (old) old.remove();
+      if (!on) return;
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'sec-del';
+      b.style.marginLeft = 'auto';
+      const num = band.querySelector('.pkg-num');
+      b.textContent = 'Remove ' + (num ? num.textContent.trim() : 'this package');
+      b.addEventListener('click', e => {
+        e.preventDefault(); e.stopPropagation();
+        if (!confirm('Remove this banner and every section under it? "Undo remove" brings it all back.')) return;
+        const nodes = [band];
+        let n = band.nextElementSibling;
+        while (n && !n.classList.contains('pkg-band')) { nodes.push(n); n = n.nextElementSibling; }
+        removeNodes(nodes);
+      });
+      const lead = band.querySelector('.pkg-lead');
+      if (lead) band.insertBefore(b, lead); else band.appendChild(b);
+    });
+  }
+
+  // Single floating delete button, repositioned over the hovered deletable item
+  const delBtn = document.createElement('button');
+  delBtn.id = 'del-float'; delBtn.type = 'button'; delBtn.textContent = '✕';
+  delBtn.title = 'Remove this item from your version';
+  delBtn.setAttribute('aria-label', 'Remove this item from your version');
+  document.body.appendChild(delBtn);
+  let delTarget = null;
+
+  function hideDel() {
+    delBtn.style.display = 'none';
+    if (delTarget) delTarget.classList.remove('del-target');
+    delTarget = null;
+  }
+
+  document.addEventListener('mouseover', e => {
+    if (!editMode) return;
+    if (e.target === delBtn) return;
+    const t = e.target.closest ? e.target.closest(DELETABLE_SEL) : null;
+    if (!t || !eligible(t)) { hideDel(); return; }
+    if (delTarget === t) return;
+    if (delTarget) delTarget.classList.remove('del-target');
+    delTarget = t;
+    t.classList.add('del-target');
+    const r = t.getBoundingClientRect();
+    delBtn.style.display = 'flex';
+    delBtn.style.left = Math.min(window.innerWidth - 30, r.right - 12) + 'px';
+    delBtn.style.top = Math.max(4, r.top - 12) + 'px';
+  });
+  document.addEventListener('scroll', hideDel, true);
+  delBtn.addEventListener('click', () => {
+    if (!delTarget) return;
+    const t = delTarget;
+    hideDel();
+    removeNode(t);
+  });
+
+  function removeNode(node) { removeNodes([node]); }
+  // One undo entry can hold several consecutive nodes (a package band + its sections)
+  function removeNodes(nodes) {
+    const items = nodes.map(n => {
+      if (n.classList) n.classList.remove('del-target');
+      return { node: n, parent: n.parentNode, next: n.nextSibling };
+    });
+    nodes.forEach(n => n.remove());
+    undoStack.push(items);
+    redoStack.length = 0;
+    dirty = true;
+    updateUndoBtns();
+    syncToc();
+  }
+  function undo() {
+    const items = undoStack.pop();
+    if (!items) return;
+    // Reverse order so each node's recorded anchor is back in the document first
+    for (let i = items.length - 1; i >= 0; i--) {
+      const op = items[i];
+      const anchor = op.next && op.parent.contains(op.next) ? op.next : null;
+      op.parent.insertBefore(op.node, anchor);
+    }
+    redoStack.push(items);
+    updateUndoBtns();
+    syncToc();
+  }
+  function redo() {
+    const items = redoStack.pop();
+    if (!items) return;
+    items.forEach(op => op.node.remove());
+    undoStack.push(items);
+    updateUndoBtns();
+    syncToc();
+  }
+
+  // Left-hand contents mirror the document: hide entries whose section is gone
+  function syncToc() {
+    const lis = Array.from(document.querySelectorAll('nav#toc li'));
+    lis.forEach(li => {
+      const a = li.querySelector('a');
+      if (!a) return;
+      li.hidden = !document.getElementById((a.getAttribute('href') || '').slice(1));
+    });
+    lis.filter(li => li.classList.contains('toc-pkg')).forEach(label => {
+      let n = label.nextElementSibling, any = false;
+      while (n && !n.classList.contains('toc-pkg')) {
+        if (!n.hidden) { any = true; break; }
+        n = n.nextElementSibling;
+      }
+      label.hidden = !any;
+    });
+  }
+  function updateUndoBtns() {
+    undoBtn.disabled = undoStack.length === 0;
+    redoBtn.disabled = redoStack.length === 0;
+  }
+  undoBtn.addEventListener('click', undo);
+  redoBtn.addEventListener('click', redo);
+
+  function setEditMode(on) {
+    editMode = on;
+    if (on) document.body.dataset.editMode = 'true';
+    else document.body.removeAttribute('data-edit-mode');
+    markEditable(on);
+    markSections(on);
+    markPackages(on);
+    toggleBtn.textContent = on ? 'Exit edit mode' : 'Prepare your version';
+    if (!on) hideDel();
+  }
+  toggleBtn.addEventListener('click', () => setEditMode(!editMode));
+  if (new URLSearchParams(location.search).has('edit')) setEditMode(true);
+
+  mainEl.addEventListener('input', () => { if (editMode) dirty = true; });
+  window.addEventListener('beforeunload', e => {
+    if (dirty) { e.preventDefault(); e.returnValue = ''; }
+  });
+
+  // Toast for quick feedback
+  const toast = document.createElement('div');
+  toast.id = 'edit-toast';
+  document.body.appendChild(toast);
+  let toastTimer = null;
+  function flash(msg) {
+    toast.textContent = msg;
+    toast.style.opacity = '1';
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => { toast.style.opacity = '0'; }, 2600);
+  }
+
+  // -- Download HTML: serialize the current DOM, minus active edit-state --
+  function cleanClone() {
+    const clone = document.documentElement.cloneNode(true);
+    clone.querySelectorAll('#del-float, #edit-toast, .sec-del').forEach(n => n.remove());
+    clone.querySelectorAll('nav#toc li[hidden]').forEach(n => n.remove());
+    clone.querySelectorAll('[contenteditable]').forEach(n => n.removeAttribute('contenteditable'));
+    clone.querySelectorAll('.editable, .del-target').forEach(n => n.classList.remove('editable', 'del-target'));
+    const body = clone.querySelector('body');
+    if (body) body.removeAttribute('data-edit-mode');
+    const t = clone.querySelector('#dot-float-tip');
+    if (t) { t.style.opacity = '0'; t.innerHTML = ''; }
+    const foot = clone.querySelector('footer.page');
+    if (foot && !clone.querySelector('#adapted-note')) {
+      const p = document.createElement('p');
+      p.id = 'adapted-note';
+      p.innerHTML = 'This copy was adapted by a reader. The original interactive analysis is at ' +
+        '<a href="' + LIVE_URL + '">' + LIVE_URL + '</a>.';
+      foot.appendChild(p);
+    }
+    return clone;
+  }
+
+  document.getElementById('edit-download').addEventListener('click', () => {
+    const html = '<!doctype html>\n' + cleanClone().outerHTML;
+    const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = SLUG + '-edited.html';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 5000);
+    dirty = false;
+    flash('Downloaded your version as a standalone HTML file.');
+  });
+
+  // -- Save as PDF: open everything, print, restore --
+  let reopenList = null;
+  window.addEventListener('beforeprint', () => {
+    reopenList = Array.from(document.querySelectorAll('section.block > details:not([open]), details.glance:not([open])'));
+    reopenList.forEach(d => d.open = true);
+  });
+  window.addEventListener('afterprint', () => {
+    if (reopenList) { reopenList.forEach(d => d.open = false); reopenList = null; }
+  });
+  document.getElementById('edit-pdf').addEventListener('click', () => window.print());
+
+  // -- Copy for Word: flatten the current DOM into Word-friendly HTML --
+  const CAMP_HEX = { 'c-donor': '#1f5fb0', 'c-canzpif': '#197b5a', 'c-g77': '#8a6d1c', 'c-sceptic': '#b03333', 'c-un': '#8a3d8f' };
+
+  function wordFragment() {
+    const frag = document.createElement('div');
+    const h1 = document.querySelector('header.page h1');
+    if (h1) {
+      const h = document.createElement('h1');
+      h.textContent = h1.textContent;
+      frag.appendChild(h);
+    }
+    document.querySelectorAll('header.page dl.meta > dt').forEach(dt => {
+      const dd = dt.nextElementSibling;
+      const p = document.createElement('p');
+      p.innerHTML = '<strong>' + dt.textContent + ':</strong> ' + (dd ? dd.innerHTML : '');
+      frag.appendChild(p);
+    });
+    mainEl.querySelectorAll('section.block').forEach(sec => {
+      const det = sec.querySelector(':scope > details');
+      if (!det) return;
+      const summary = det.querySelector(':scope > summary');
+      if (summary) {
+        const sc = summary.cloneNode(true);
+        sc.querySelectorAll('.sec-del').forEach(n => n.remove());
+        const h2 = document.createElement('h2');
+        h2.textContent = sc.textContent.trim();
+        frag.appendChild(h2);
+      }
+      const content = document.createElement('div');
+      Array.from(det.children).forEach(ch => {
+        if (ch !== summary) content.appendChild(ch.cloneNode(true));
+      });
+      content.querySelectorAll('.controls, .result-count, .plot-scroll, .plot-legend, .plot-guide, .axis-explainer, .ev-panel, .ev-note, .sec-del').forEach(n => n.remove());
+      // Plots cannot travel to Word: keep the score table, link the interactive original
+      content.querySelectorAll('details.glance').forEach(g => {
+        const tbl = g.querySelector('table');
+        const wrap = document.createElement('div');
+        if (tbl) {
+          const h3 = document.createElement('h3');
+          h3.textContent = 'Scores at a glance';
+          wrap.appendChild(h3);
+          wrap.appendChild(tbl.cloneNode(true));
+          const note = document.createElement('p');
+          note.innerHTML = '<em>Interactive engagement plot and evidence panels: see the <a href="' + LIVE_URL + '">original analysis</a>.</em>';
+          wrap.appendChild(note);
+        }
+        g.replaceWith(wrap);
+      });
+      frag.appendChild(content);
+    });
+    const note = document.createElement('p');
+    note.innerHTML = '<em>Adapted from the original interactive analysis: <a href="' + LIVE_URL + '">' + LIVE_URL + '</a></em>';
+    frag.appendChild(note);
+    // Inline the styles Word actually keeps: camp colours and quote formatting
+    Object.entries(CAMP_HEX).forEach(([cls, hex]) => {
+      frag.querySelectorAll('.' + cls).forEach(n => { n.style.color = hex; n.style.fontWeight = '600'; });
+    });
+    frag.querySelectorAll('blockquote').forEach(b => {
+      b.style.fontStyle = 'italic';
+      b.style.borderLeft = '3px solid #999';
+      b.style.paddingLeft = '10pt';
+      b.style.margin = '8pt 0 8pt 10pt';
+    });
+    frag.querySelectorAll('table').forEach(tb => {
+      tb.setAttribute('border', '1');
+      tb.style.borderCollapse = 'collapse';
+    });
+    return frag;
+  }
+
+  document.getElementById('edit-copy').addEventListener('click', async () => {
+    const frag = wordFragment();
+    const html = '<html><body>' + frag.innerHTML + '</body></html>';
+    const holder = document.createElement('div');
+    holder.style.position = 'fixed'; holder.style.left = '-9999px';
+    holder.appendChild(frag);
+    document.body.appendChild(holder);
+    const text = holder.innerText;
+    holder.remove();
+    try {
+      await navigator.clipboard.write([new ClipboardItem({
+        'text/html': new Blob([html], { type: 'text/html' }),
+        'text/plain': new Blob([text], { type: 'text/plain' })
+      })]);
+      flash('Copied. Paste into Word or Outlook.');
+    } catch (err) {
+      const sel = document.createElement('div');
+      sel.style.position = 'fixed'; sel.style.left = '-9999px';
+      sel.innerHTML = html;
+      document.body.appendChild(sel);
+      const range = document.createRange();
+      range.selectNodeContents(sel);
+      const s = getSelection();
+      s.removeAllRanges(); s.addRange(range);
+      document.execCommand('copy');
+      s.removeAllRanges(); sel.remove();
+      flash('Copied. Paste into Word or Outlook.');
+    }
+  });
+})();
+
+</script>
+</body>
+</html>

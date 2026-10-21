@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Methodology &mdash; Beyond GDP country-phase webinar, 21 October 2026</title>
+<style>
+  :root { --bg:#f7f6f2; --surface:#ffffff; --ink:#1a1c20; --muted:#5b6470; --rule:#e3e1da; --accent-default:#2e4a86; --warn:#8a6d1c; --radius:10px; }
+  * { box-sizing:border-box; }
+  body { margin:0; font:16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color:var(--ink); background:var(--bg); }
+  a { color:var(--accent-default); }
+  .wrap { max-width:820px; margin:0 auto; padding:2rem 1.25rem 4rem; }
+  @media (max-width:520px){ .wrap{padding:1.25rem 1rem 3rem;} }
+  h1 { font-size:clamp(1.4rem,2.4vw,1.9rem); line-height:1.25; margin:0 0 .4rem; }
+  h2 { font-size:1.1rem; color:var(--accent-default); margin:1.8rem 0 .5rem; }
+  .lead { color:var(--muted); margin:0 0 1.25rem; }
+  .warnbox { background:color-mix(in srgb,var(--warn) 9%,white); border:1px solid color-mix(in srgb,var(--warn) 35%,transparent); border-left:4px solid var(--warn); border-radius:8px; padding:.8rem 1rem; font-size:.93rem; }
+  .warnbox p { margin:.3rem 0; }
+  section { background:var(--surface); border:1px solid var(--rule); border-radius:var(--radius); padding:.25rem 1.25rem 1rem; margin:1rem 0; }
+  ul { padding-left:1.25rem; }
+  li { margin:.3rem 0; }
+  table { width:100%; border-collapse:collapse; font-size:.9rem; margin:.6rem 0; }
+  th, td { text-align:left; padding:.45rem .5rem; border-bottom:1px solid var(--rule); vertical-align:top; }
+  th { font-size:.74rem; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); }
+  .tbl-scroll { overflow-x:auto; }
+  footer { margin-top:2rem; color:var(--muted); font-size:.88rem; font-style:italic; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p><a href="../readouts/beyond-gdp-webinar-2026-10.html">&larr; Back to the readout</a></p>
+  <h1>Methodology and limitations</h1>
+  <p class="lead">Beyond GDP: the UN launches the country phase &mdash; information session, 21 October 2026</p>
+
+  <div class="warnbox">
+    <p><strong>Source status.</strong> The readout uses a screen recording of the first information session
+    (89.5 minutes). The transcript comes from local speech recognition. It is not an official UN record, and the
+    organisers have not reviewed it.</p>
+    <p><strong>Quote checks.</strong> All 11 quote blocks and 17 short quoted phrases were checked against a second
+    transcription of the audio. Two passages gave different words in the two passes. Those passages are paraphrased
+    and carry no quote marks.</p>
+  </div>
+
+  <section>
+    <h2>What kind of readout this is</h2>
+    <p>This was an information webinar. UN staff presented a support offer, and the audience asked questions. No
+    member state took the floor. So the readout does not map positions, fault lines or engagement. It records what
+    the UN said, and it marks what is new against the three earlier Beyond GDP readouts.</p>
+    <p>The meeting is classified as <strong>informal</strong>. No position score was run, because there are no
+    delegation positions to score.</p>
+  </section>
+
+  <section>
+    <h2>How the readout was made</h2>
+    <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>Step</th><th>Method</th></tr></thead>
+      <tbody>
+        <tr><td>Transcription</td><td>Audio extracted to 16 kHz mono. Transcribed with Whisper large-v3-turbo on a local GPU, with voice-activity detection and settings that reduce repeated text. Nothing left the machine.</td></tr>
+        <tr><td>Speakers</td><td>Voice-based speaker separation (pyannote). Each voice was named from the Zoom name label on screen, the speaker&rsquo;s own introduction and the published programme. Six speaker changes were checked against the video. All six matched.</td></tr>
+        <tr><td>Slides</td><td>One video frame every 20 seconds (269 frames). Slide text was read from the frames. Figures marked &ldquo;slide&rdquo; in the readout come from this step. Frames that did not show the webinar were left out.</td></tr>
+        <tr><td>Companion documents</td><td>Programme, concept note and expression-of-interest note from the <a href="https://unctad.org/meeting/launch-new-phase-advancing-development-and-use-metrics-policymaking-beyond-gdp">UNCTAD event page</a>. Dates and names were checked against them.</td></tr>
+        <tr><td>&ldquo;What is new&rdquo;</td><td>Each item was compared with the readouts of 4 March, 7 May and July 2026. Items the earlier readouts already carry are left out or listed as repeats.</td></tr>
+        <tr><td>Quote check</td><td>Each quoted passage was cut from the audio and transcribed again with different decoding settings. The two texts were compared word by word.</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Choices and limits</h2>
+    <ul>
+      <li><strong>Audience questions are not attributed.</strong> The askers are private attendees, and speech recognition does not spell their names reliably. The questions are numbered and paraphrased.</li>
+      <li><strong>Some audio is unclear.</strong> Parts of the recording have dropouts and crosstalk. Where a passage stayed unclear after the second transcription, it was left out. One answer about Spain&rsquo;s role in the process is not reported for this reason.</li>
+      <li><strong>Speaker slips are corrected from the slide.</strong> One speaker said &ldquo;seven out of seven&rdquo;. The slide behind him reads &ldquo;7 in 10&rdquo;, so the readout uses the slide figure.</li>
+      <li><strong>External claims are reported, not verified.</strong> The statement that multidimensional poverty rose for the first time is reported as the speaker&rsquo;s statement.</li>
+      <li><strong>Data coverage figures</strong> come from the presenters&rsquo; slides. The presenters call them &ldquo;preliminary and indicative&rdquo;. They count public international sources only, not national databases.</li>
+      <li><strong>One session only.</strong> The second session on 22 October had the same programme. Its questions may differ and are not covered.</li>
+      <li><strong>Times</strong> in the readout are minutes from the start of the recording, which begins at the welcome.</li>
+    </ul>
+  </section>
+
+  <footer>Prepared October 2026. The transcript and working notes are kept locally and are not published.</footer>
+</div>
+</body>
+</html>
